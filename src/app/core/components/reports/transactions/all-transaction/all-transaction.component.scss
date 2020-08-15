@@ -1,0 +1,30 @@
+.level-item {
+    margin-right: 0 !important;
+
+    &:nth-child(2) {
+        margin-right: 0.5rem !important;
+    }
+}
+
+a.box {
+    transition: all 0.3s linear;
+
+    &:hover {
+        transform: translateY(-3px);
+    }
+}
+
+.chart-field {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    min-height: 350px;
+
+    canvas {
+        height: 350px !important;
+    }
+}
+
+.mat-form-field-underline {
+    bottom: 0 !important;
+}

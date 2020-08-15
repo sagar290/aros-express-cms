@@ -1,0 +1,31 @@
+<div [ngClass]="{'card': completeds.length}">
+    <div class="card-content" [ngClass]="!completeds.length ? 'flex-center': 'card-content'"
+        [ngStyle]="{'height': !completeds.length ? '50vh': 'auto'}">
+        <p *ngIf="!completeds.length">No parcel is completed!</p>
+        <div class="table-container" *ngIf="completeds.length">
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Merchant Name</th>
+                        <th>Business Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let completed of completeds">
+                        <td>{{completed.id}}</td>
+                        <td>{{completed.merchant.name}}</td>
+                        <td>{{completed.merchant.business_name}}</td>
+                        <td>
+                            <button class="button is-success is-small"
+                                [routerLink]="['/parcel', 'details', completed.id]">
+                                Details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

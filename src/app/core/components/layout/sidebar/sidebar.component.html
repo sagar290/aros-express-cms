@@ -1,0 +1,77 @@
+<div class="sidebar" [ngClass]="{'is-open': drawerAcivated}">
+    <div class="logo">
+        <img src="assets/images/logo.png" alt="10ms_logo">
+    </div>
+    <aside class="menu">
+        <ul class="menu-list">
+            <li [ngClass]="{'is-open': parcel}">
+                <a (click)="parcel = !parcel;">
+                    <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.51794 -1.54143e-05L7.48211 -1.48929e-05C7.71757 -0.000315757 7.94831 0.058226 8.14763 0.168835C8.34694 0.279443 8.50669 0.437595 8.60836 0.624985C8.72738 0.847324 8.77323 1.09469 8.74067 1.3389C8.7081 1.58311 8.59845 1.81434 8.42419 2.00624L5.44211 5.19374C5.32508 5.31288 5.18039 5.40843 5.01785 5.47392C4.85531 5.53941 4.67871 5.5733 4.50003 5.5733C4.32134 5.5733 4.14474 5.53941 3.9822 5.47392C3.81966 5.40843 3.67497 5.31288 3.55794 5.19374L0.575859 2.00623C0.401605 1.81434 0.29195 1.58311 0.259388 1.3389C0.226827 1.09469 0.272671 0.847323 0.391695 0.624984C0.49337 0.437595 0.65311 0.279442 0.852427 0.168834C1.05174 0.0582254 1.28249 -0.000316319 1.51794 -1.54143e-05Z"
+                            fill="white" />
+                    </svg>
+                    Parcel
+                </a>
+                <ul>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'pending']">Pending</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'stored']">Stored</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'processed']">Processed</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'completed']">Completed</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'cancelled']">Cancelled</a>
+                    </li>
+                </ul>
+            </li>
+            <li [ngClass]="{'is-open': pickupMan}">
+                <a (click)="pickupMan = !pickupMan;">
+                    <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.51794 -1.54143e-05L7.48211 -1.48929e-05C7.71757 -0.000315757 7.94831 0.058226 8.14763 0.168835C8.34694 0.279443 8.50669 0.437595 8.60836 0.624985C8.72738 0.847324 8.77323 1.09469 8.74067 1.3389C8.7081 1.58311 8.59845 1.81434 8.42419 2.00624L5.44211 5.19374C5.32508 5.31288 5.18039 5.40843 5.01785 5.47392C4.85531 5.53941 4.67871 5.5733 4.50003 5.5733C4.32134 5.5733 4.14474 5.53941 3.9822 5.47392C3.81966 5.40843 3.67497 5.31288 3.55794 5.19374L0.575859 2.00623C0.401605 1.81434 0.29195 1.58311 0.259388 1.3389C0.226827 1.09469 0.272671 0.847323 0.391695 0.624984C0.49337 0.437595 0.65311 0.279442 0.852427 0.168834C1.05174 0.0582254 1.28249 -0.000316319 1.51794 -1.54143e-05Z"
+                            fill="white" />
+                    </svg>
+                    Pickup Man
+                </a>
+                <ul>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/pickup-man', 'all']">All</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/pickup-man', 'add']">Add</a>
+                    </li>
+                </ul>
+            </li>
+            <li [ngClass]="{'is-open': deliveryMan}">
+                <a (click)="deliveryMan = !deliveryMan;">
+                    <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.51794 -1.54143e-05L7.48211 -1.48929e-05C7.71757 -0.000315757 7.94831 0.058226 8.14763 0.168835C8.34694 0.279443 8.50669 0.437595 8.60836 0.624985C8.72738 0.847324 8.77323 1.09469 8.74067 1.3389C8.7081 1.58311 8.59845 1.81434 8.42419 2.00624L5.44211 5.19374C5.32508 5.31288 5.18039 5.40843 5.01785 5.47392C4.85531 5.53941 4.67871 5.5733 4.50003 5.5733C4.32134 5.5733 4.14474 5.53941 3.9822 5.47392C3.81966 5.40843 3.67497 5.31288 3.55794 5.19374L0.575859 2.00623C0.401605 1.81434 0.29195 1.58311 0.259388 1.3389C0.226827 1.09469 0.272671 0.847323 0.391695 0.624984C0.49337 0.437595 0.65311 0.279442 0.852427 0.168834C1.05174 0.0582254 1.28249 -0.000316319 1.51794 -1.54143e-05Z"
+                            fill="white" />
+                    </svg>
+                    Delivery Man
+                </a>
+                <ul>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/delivery-man', 'all']">All</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/delivery-man', 'add']">Add</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-label is-hidden-desktop">
+                Account
+            </li>
+            <li class="menu-list is-hidden-desktop is-open">
+                <ul>
+                    <li><a>My Profile</a></li>
+                    <li><a (click)="logout()">Sign Out</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </aside>
+</div>
+<div class="closedrawer" (click)="hideDrawer()"
+    [ngStyle]="drawerAcivated && {'visibility': 'inherit', 'opacity': '0.7'}">
+</div>

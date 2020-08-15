@@ -1,0 +1,30 @@
+<div [ngClass]="{'card': storeds.length}">
+    <div class="card-content" [ngClass]="!storeds.length ? 'flex-center': 'card-content'"
+        [ngStyle]="{'height': !storeds.length ? '50vh': 'auto'}">
+        <p *ngIf="!storeds.length">No parcel is stored!</p>
+        <div class="table-container" *ngIf="storeds.length">
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Merchant Name</th>
+                        <th>Business Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stored of storeds">
+                        <td>{{stored.id}}</td>
+                        <td>{{stored.merchant.name}}</td>
+                        <td>{{stored.merchant.business_name}}</td>
+                        <td>
+                            <button class="button is-success is-small" [routerLink]="['/parcel', 'details', stored.id]">
+                                Details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

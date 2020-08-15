@@ -1,0 +1,31 @@
+<div [ngClass]="{'card': cancelleds.length}">
+    <div class="card-content" [ngClass]="!cancelleds.length ? 'flex-center': 'card-content'"
+        [ngStyle]="{'height': !cancelleds.length ? '50vh': 'auto'}">
+        <p *ngIf="!cancelleds.length">No parcel is cancelled!</p>
+        <div class="table-container" *ngIf="cancelleds.length">
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Merchant Name</th>
+                        <th>Business Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cancelled of cancelleds">
+                        <td>{{cancelled.id}}</td>
+                        <td>{{cancelled.merchant.name}}</td>
+                        <td>{{cancelled.merchant.business_name}}</td>
+                        <td>
+                            <button class="button is-success is-small"
+                                [routerLink]="['/parcel', 'details', cancelled.id]">
+                                Details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

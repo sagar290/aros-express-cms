@@ -1,0 +1,21 @@
+.transaction-box-container
+    position: relative
+    display: flex
+    justify-content: center
+    width: 100%
+    +tablet
+        text-align: center
+    .box
+        width: 48.5%
+        display: inline-block
+        margin-bottom: 1.5rem
+
+        +tablet
+            width: 25%
+            text-align: left
+
+            &:not(:last-child)
+                margin-right: 2rem
+
+        &:first-child
+            margin-right: 2%

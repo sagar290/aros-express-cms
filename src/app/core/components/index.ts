@@ -1,0 +1,1 @@
+export * from './loader/loading.component'

@@ -1,0 +1,31 @@
+<div [ngClass]="{'card': pendings.length}">
+    <div class="card-content" [ngClass]="!pendings.length ? 'flex-center': 'card-content'"
+        [ngStyle]="{'height': !pendings.length ? '50vh': 'auto'}">
+        <p *ngIf="!pendings.length">No parcel is pending!</p>
+        <div class="table-container" *ngIf="pendings.length">
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Merchant Name</th>
+                        <th>Business Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pending of pendings">
+                        <td>{{pending.id}}</td>
+                        <td>{{pending.merchant.name}}</td>
+                        <td>{{pending.merchant.business_name}}</td>
+                        <td>
+                            <button class="button is-success is-small"
+                                [routerLink]="['/parcel', 'details', pending.id]">
+                                Details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

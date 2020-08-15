@@ -1,0 +1,38 @@
+@charset "utf-8";
+//importing font
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap");
+// Update Bulma's global variables
+$family-sans-serif: "Roboto", sans-serif;
+
+// Update some of Bulma's component variables
+$body-background-color: #f4f7fc;
+$input-border-color: #bfbfbf;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "./bulma/utilities/_all.sass";
+@import "./bulma/base/_all.sass";
+@import "./bulma/helpers/_all.sass";
+@import "./bulma/elements/_all.sass";
+@import "./bulma/components/_all.sass";
+@import "./bulma/form/_all.sass";
+@import "./bulma/grid/_all.sass";
+@import "./bulma/layout/_all.sass";
+@import "./bulma/pages/_all.sass";
+
+.panel-header {
+    // @include mobile {
+    text-overflow: ellipsis;
+    // max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    // }
+}
+
+.is-fullwidth {
+    width: 100%;
+}
+
+.is-center {
+    text-align: center;
+}

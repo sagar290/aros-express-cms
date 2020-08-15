@@ -1,0 +1,47 @@
+.is-radiusless
+  border-radius: 0 !important
+.is-circle
+  border-radius: 50% 
+.is-shadowless
+  box-shadow: none !important
+
+.is-unselectable
+  @extend %unselectable
+
+//angular material css override
+.mat-form-field-wrapper
+    padding-bottom: 0
+
+//overriding ngx-daterangepicker css
+.md-drppicker
+  box-shadow: none!important
+  .buttons
+    display: none
+    .mat-raised-button
+      &.mat-primary
+       background-color: #0084FF
+  td
+    vertical-align: middle
+    &.in-range 
+      background-color: #E5F3FF
+      border-color: #eee
+      color: #0084FF
+    &.active, &.active:hover
+      background-color: #0084FF
+      color: #fff
+      transition: background .3s ease-out,border .3s ease-out
+    &.off
+      background-color: #fff
+      border-color: #fff
+      color: rgba(0,0,0,.38)
+    &.start-date
+      border-radius: 2rem 0 0 2rem!important
+
+//overriding ngx-charts css
+.ngx-charts 
+
+  float: none!important
+  .grid-panel.odd rect
+    fill: #fff!important
+  text
+    fill: #7E7E7E

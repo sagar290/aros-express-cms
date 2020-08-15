@@ -1,0 +1,24 @@
+<div class="date-selector">
+    <div class="left-panel">
+        <a>Today</a>
+        <a>Yesterday</a>
+        <a>last 7 Days</a>
+        <a>last 30 Days</a>
+        <a>This Month</a>
+        <a>Last Month</a>
+        <a>This Year</a>
+        <a>All Time</a>
+        <a class="active">Custom Range</a>
+    </div>
+    <div class="main-panel">
+        <ngx-daterangepicker-material [locale]="{ applyLabel: 'Done', firstDay: 6 }" name="inline-daterangepicker"
+            (chosenDate)="chosenDate($event)" [startDate]="selected?.startDate" [endDate]="selected?.endDate">
+        </ngx-daterangepicker-material>
+        <div class="save-date">
+            <div class="buttons">
+                <button class="button is-light" (click)="onNoClick()">Cancel</button>
+                <button class="button  is-info">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>

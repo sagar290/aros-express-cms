@@ -1,0 +1,39 @@
+<nav class="navbar header is-fixed-top navbar has-shadow">
+    <div class="navbar-brand">
+        <a class="navbar-item is-hidden-desktop">
+            <img src="assets/images/logo.png" alt="logo" width="112" height="28">
+        </a>
+
+        <a class="navbar-burger burger" (click)="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <app-breadcrumb class="is-hidden-touch"></app-breadcrumb>
+
+    </div>
+    <div class="navbar-menu is-hidden-touch">
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    <img [src]="user.dp || 'assets/images/avatar.png'" class="is-circle" alt="user_image">
+                    <span class="ml-2">{{user?.name}}</span>
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                        My Profile
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" (click)="logout()">
+                        Sign Out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div style="margin-bottom: 60px;">
+
+</div>

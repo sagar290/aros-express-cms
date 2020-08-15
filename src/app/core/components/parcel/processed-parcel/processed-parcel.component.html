@@ -1,0 +1,31 @@
+<div [ngClass]="{'card': processeds.length}">
+    <div class="card-content" [ngClass]="!processeds.length ? 'flex-center': 'card-content'"
+        [ngStyle]="{'height': !processeds.length ? '50vh': 'auto'}">
+        <p *ngIf="!processeds.length">No parcel is processed!</p>
+        <div class="table-container" *ngIf="processeds.length">
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Merchant Name</th>
+                        <th>Business Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let processed of processeds">
+                        <td>{{processed.id}}</td>
+                        <td>{{processed.merchant.name}}</td>
+                        <td>{{processed.merchant.business_name}}</td>
+                        <td>
+                            <button class="button is-success is-small"
+                                [routerLink]="['/parcel', 'details', processed.id]">
+                                Details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

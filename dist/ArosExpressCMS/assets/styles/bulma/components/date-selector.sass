@@ -1,0 +1,42 @@
+$left-panel-color: #878787
+$left-panel-active-bg-color: #0084FF
+$date-selector-border-color: #919090
+.date-selector
+    border: 1px solid $date-selector-border-color
+    border-radius: 4px
+    display: grid
+    grid-template-areas: "left-panel main-panel"
+    position: relative
+
+    .left-panel
+        border-right: 1px solid $date-selector-border-color
+        padding: 0.5rem
+        grid-area: left-panel
+
+        a
+            display: block
+            padding: 1rem
+            width: 100%
+            text-align: center
+            color: $left-panel-color
+            border-radius: 5px
+            
+            &:hover, &:active, &:focus, &.active
+                background-color: $left-panel-active-bg-color
+                color: white
+            &:not(:last-child)
+                margin-bottom: 1px
+    
+    .main-panel
+        grid-area: main-panel
+        padding: 2rem
+        position: relative
+
+
+        .save-date
+            position: absolute
+            bottom: 0.5rem
+            +flex
+            +align-center
+            +flex-end
+            width: 90%

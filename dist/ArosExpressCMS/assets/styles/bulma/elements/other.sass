@@ -1,0 +1,103 @@
+.block
+  @extend %block
+
+.delete
+  @extend %delete
+
+.heading
+  display: block
+  font-size: 11px
+  letter-spacing: 1px
+  margin-bottom: 5px
+  text-transform: uppercase
+
+.highlight
+  @extend %block
+  font-weight: $weight-normal
+  max-width: 100%
+  overflow: hidden
+  padding: 0
+  pre
+    overflow: auto
+    max-width: 100%
+
+.loader
+  @extend %loader
+
+.number
+  align-items: center
+  background-color: $background
+  border-radius: $radius-rounded
+  display: inline-flex
+  font-size: $size-medium
+  height: 2em
+  justify-content: center
+  margin-right: 1.5rem
+  min-width: 2.5em
+  padding: 0.25rem 0.5rem
+  text-align: center
+  vertical-align: top
+
+//slider switch
+
+.switch 
+    position: relative
+    display: inline-block
+    width: 60px
+    height: 28px
+
+
+.switch 
+    input
+        opacity: 0
+        width: 0
+        height: 0
+
+.slider 
+    position: absolute
+    cursor: pointer
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #ccc
+    -webkit-transition: 0.4s
+    transition: 0.4s
+
+
+.slider:before 
+    position: absolute
+    content: ""
+    height: 20px
+    width: 20px
+    left: 4px
+    bottom: 4px
+    background-color: white
+    -webkit-transition: 0.4s
+    transition: 0.4s
+
+
+input
+    &:checked + .slider 
+        background-color: #5fcb39
+
+
+input
+    &:focus + .slider 
+        box-shadow: 0 0 1px #5fcb39
+
+
+input
+    &:checked + .slider:before 
+        -webkit-transform: translateX(32px)
+        -ms-transform: translateX(32px)
+        transform: translateX(32px)
+
+
+/* Rounded sliders */
+.slider.round 
+    border-radius: 34px
+
+
+.slider.round:before 
+    border-radius: 50%

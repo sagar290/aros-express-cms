@@ -1,8 +1,6 @@
-<div [ngClass]="{'card': completeds.length}">
-    <div class="card-content" [ngClass]="!completeds.length ? 'flex-center': 'card-content'"
-        [ngStyle]="{'height': !completeds.length ? '50vh': 'auto'}">
-        <p *ngIf="!completeds.length">No parcel is completed!</p>
-        <div class="table-container" *ngIf="completeds.length">
+<div class="card">
+    <div class="card-content">
+        <div class="table-container">
             <table class="table is-hoverable is-fullwidth">
                 <thead>
                     <tr>
@@ -13,6 +11,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr *ngIf="!completeds.length">
+                        <td colspan="4" [ngStyle]="{'height': !completeds.length ? '50vh': 'auto'}">No parcel is
+                            completed!</td>
+                    </tr>
                     <tr *ngFor="let completed of completeds">
                         <td>{{completed.id}}</td>
                         <td>{{completed.merchant.name}}</td>

@@ -1,8 +1,6 @@
-<div [ngClass]="{'card': storeds.length}">
-    <div class="card-content" [ngClass]="!storeds.length ? 'flex-center': 'card-content'"
-        [ngStyle]="{'height': !storeds.length ? '50vh': 'auto'}">
-        <p *ngIf="!storeds.length">No parcel is stored!</p>
-        <div class="table-container" *ngIf="storeds.length">
+<div class="card">
+    <div class="card-content">
+        <div class="table-container">
             <table class="table is-hoverable is-fullwidth">
                 <thead>
                     <tr>
@@ -13,6 +11,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr *ngIf="!storeds.length">
+                        <td colspan="4" [ngStyle]="{'height': !storeds.length ? '50vh': 'auto'}">No parcel is
+                            processed!</td>
+                    </tr>
                     <tr *ngFor="let stored of storeds">
                         <td>{{stored.id}}</td>
                         <td>{{stored.merchant.name}}</td>

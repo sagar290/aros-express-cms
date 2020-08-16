@@ -100,6 +100,106 @@
         <div class="card">
             <header class="card-header">
                 <p class="card-header-title">
+                    Additional Info
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Category</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
+                                        [value]="parcel.category" (change)="parcel.category = $event.target.value">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal py-3">
+                        <div class="field-label is-normal">
+                            <label class="label">Status</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    {{parcel.status}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal py-3">
+                        <div class="field-label is-normal">
+                            <label class="label">Order Created</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    {{parcel.created_ad}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Pickup Assigned</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    <div class="select is-fullwidth">
+                                        <select (change)="parcel.p_id = +$event.target.value">
+                                            <option value="">-- select a pickup man -- </option>
+                                            <option value="{{pman.id}}" *ngFor="let pman of pickupmen"
+                                                [selected]="pman.id == parcel.p_id">{{pman.location}} | {{pman.area}} |
+                                                {{pman.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control ml-2">
+                                    <button class="button is-primary"
+                                        (click)="assignPDman({'p_id': parcel.p_id})">Assign</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Delivery Assigned</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    <div class="select is-fullwidth">
+                                        <select (change)="parcel.d_id = +$event.target.value">
+                                            <option value="">-- select a delivery man -- </option>
+                                            <option value="{{dman.id}}" *ngFor="let dman of deliverymen"
+                                                [selected]="dman.id == parcel.d_id">{{dman.location}} | {{dman.area}} |
+                                                {{dman.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control ml-2">
+                                    <button class="button is-primary"
+                                        (click)="assignPDman({'d_id': parcel.d_id})">Assign</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
                     Product Details
                 </p>
             </header>
@@ -168,9 +268,9 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <textarea class="input" [ngClass]="{'editable': edited}" type="text"
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
                                         [value]="parcel.product_additional_info"
-                                        (change)="parcel.product_additional_info = $event.target.value"></textarea>
+                                        (change)="parcel.product_additional_info = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -179,8 +279,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="columns">
     <div class="column">
         <div class="card">
             <header class="card-header">
@@ -208,99 +306,19 @@
             </div>
         </div>
     </div>
-    <div class="column">
-        <div class="card">
-            <header class="card-header">
-                <p class="card-header-title">
-                    Additional Info
-                </p>
-            </header>
-            <div class="card-content">
-                <div class="content">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Category</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.category" (change)="parcel.category = $event.target.value">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Status</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.status" (change)="parcel.status = $event.target.value">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Created At</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.created_ad" (change)="parcel.created_ad = $event.target.value">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Pickup Assigned</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <div class="control">
-                                    <div class="select is-fullwidth" [ngClass]="{'editable': edited}">
-                                        <select (change)="pickupman = +$event.target.value">
-                                            <option value="{{pman.id}}" *ngFor="let pman of pickupmen"
-                                                [selected]="pman.id == parcel.p_id">{{pman.name}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Delivery Assigned</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <div class="control">
-                                    <div class="select is-fullwidth" [ngClass]="{'editable': edited}">
-                                        <select (change)="deliveryman = +$event.target.value">
-                                            <option value="{{dman.id}}" *ngFor="let dman of deliverymen"
-                                                [selected]="dman.id == parcel.d_id">{{dman.name}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="field is-grouped is-grouped-centered">
-    <p class="control">
-        <button class="button is-info" type="button" [ngClass]="{'is-success': edited}" (click)="onEditToggle(edited)">
-            {{ edited ? 'Save' : 'Edit' }}
-        </button>
-    </p>
 </div>
+<div class="buttons is-centered">
+    <button class="button is-danger" (click)="cancelOrder()">Cancel Order</button>
+    <button class="button is-info" [ngClass]="{'is-warning': edited}"
+        (click)="edited = !edited">{{ edited ? 'Cancel Edit' : 'Edit' }}
+    </button>
+    <button class="button is-success" *ngIf="edited" (click)="edit()">
+        Save
+    </button>
+</div>
+<!-- <div class="field is-grouped is-grouped-centered">
+    <p class="control">
+        
+    </p>
+</div> -->

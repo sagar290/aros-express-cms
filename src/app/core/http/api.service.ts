@@ -38,14 +38,28 @@ export class ApiService {
   editParcel(id, data) {
     return this.http.patch(`${environment.api_url}/cms/parcel/${id}`, data).pipe(map((data: any) => data.data))
   }
+  cancelParcel(id, data) {
+    return this.http.post(`${environment.api_url}/cms/parcel/${id}`, data).pipe(map((data: any) => data.data))
+  }
+
+  // pickupman
   getAllPickupman() {
     return this.http.get(`${environment.api_url}/cms/pickupman/all`).pipe(map((data: any) => data.data))
   }
+  addPickupman(data) {
+    return this.http.post(`${environment.api_url}/cms/pickupman`, data).pipe(map((data: any) => data.data))
+  }
+
   assignPickupOrDeliveryman(id, data) {
     return this.http.post(`${environment.api_url}/cms/parcel/${id}/assign`, data).pipe(map((data: any) => data.data))
   }
+
+  // deliveryman
   getAllDeliveryman() {
     return this.http.get(`${environment.api_url}/cms/deliveryman/all`).pipe(map((data: any) => data.data))
+  }
+  addDeliveryman(data) {
+    return this.http.post(`${environment.api_url}/cms/deliveryman`, data).pipe(map((data: any) => data.data))
   }
 
   // promo

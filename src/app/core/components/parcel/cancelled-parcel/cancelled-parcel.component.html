@@ -1,8 +1,6 @@
-<div [ngClass]="{'card': cancelleds.length}">
-    <div class="card-content" [ngClass]="!cancelleds.length ? 'flex-center': 'card-content'"
-        [ngStyle]="{'height': !cancelleds.length ? '50vh': 'auto'}">
-        <p *ngIf="!cancelleds.length">No parcel is cancelled!</p>
-        <div class="table-container" *ngIf="cancelleds.length">
+<div class="card">
+    <div class="card-content">
+        <div class="table-container">
             <table class="table is-hoverable is-fullwidth">
                 <thead>
                     <tr>
@@ -13,7 +11,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr *ngIf="!cancelleds.length">
+                        <td colspan="4" [ngStyle]="{'height': !cancelleds.length ? '50vh': 'auto'}">No parcel is
+                            cancelled!</td>
+                    </tr>
                     <tr *ngFor="let cancelled of cancelleds">
+                        <td></td>
                         <td>{{cancelled.id}}</td>
                         <td>{{cancelled.merchant.name}}</td>
                         <td>{{cancelled.merchant.business_name}}</td>

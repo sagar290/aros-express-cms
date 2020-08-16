@@ -1,0 +1,123 @@
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Pickupman Details
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Name</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': errors?.name}" type="text"
+                                        (change)="pickupman.name = $event.target.value">
+                                </p>
+                                <p class="help is-danger" *ngIf="errors?.name">This field is required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">NID number</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': errors?.nid}" type="text"
+                                        (change)="pickupman.nid = $event.target.value">
+                                </p>
+                                <p class="help is-danger" *ngIf="errors?.nid">This field is required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Password</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': errors?.password}" type="text"
+                                        (change)="pickupman.password = $event.target.value">
+                                </p>
+                                <p class="help is-danger" *ngIf="errors?.password">This field is required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Contact</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': errors?.contact}" type="tel"
+                                        (change)="pickupman.contact = $event.target.value">
+                                </p>
+                                <p class="help is-danger" *ngIf="errors?.contact">This field is required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Area</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': errors?.area}"
+                                        (change)="pickupman.area = $event.target.value">
+                                </p>
+                                <p class="help is-danger" *ngIf="errors?.area">This field is required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Location</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': errors?.location}"
+                                        (change)="pickupman.location = $event.target.value">
+                                </p>
+                                <p class="help is-danger" *ngIf="errors?.location">This field is required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal pt-3">
+                        <div class="field-label is-normal">
+                            <label class="label">Status</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <label class="radio">
+                                        <input type="radio" name="status" [checked]="pickupman.satus"
+                                            (change)="pickupman.satus = true">
+                                        Active
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="status" [checked]="!pickupman.satus"
+                                            (change)="pickupman.satus = false">
+                                        Inactive
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="my-4 buttons is-centered">
+    <a class="button is-success" (click)="save()">Save</a>
+</div>

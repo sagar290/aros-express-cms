@@ -67,8 +67,6 @@ export class AuthService {
     return this.http.post(`${environment.api_url}/auth/cms/login`, credentials)
       .pipe(
         map((data: any) => {
-          console.log("1", data);
-
           this.createSession(data)
           this.router.navigateByUrl(this.redirectUrl)
           this.populate()

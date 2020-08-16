@@ -31,6 +31,10 @@ import { ProcessedParcelComponent } from './components/parcel/processed-parcel/p
 import { CompletedParcelComponent } from './components/parcel/completed-parcel/completed-parcel.component';
 import { CancelledParcelComponent } from './components/parcel/cancelled-parcel/cancelled-parcel.component';
 import { EditParcelComponent } from './components/parcel/edit-parcel/edit-parcel.component';
+import { AllPickupmanComponent } from './components/pickupman/all-pickupman/all-pickupman.component';
+import { AddPickupmanComponent } from './components/pickupman/add-pickupman/add-pickupman.component';
+import { AddDeliverymanComponent } from './components/deliveryman/add-deliveryman/add-deliveryman.component';
+import { AllDeliverymanComponent } from './components/deliveryman/all-deliveryman/all-deliveryman.component';
 
 const IMP_EXP = [
   HeaderComponent,
@@ -51,7 +55,11 @@ const IMP_EXP = [
     ProcessedParcelComponent,
     CompletedParcelComponent,
     CancelledParcelComponent,
-    EditParcelComponent
+    EditParcelComponent,
+    AllPickupmanComponent,
+    AddPickupmanComponent,
+    AddDeliverymanComponent,
+    AllDeliverymanComponent
   ],
   imports: [
     CommonModule,
@@ -114,6 +122,10 @@ const IMP_EXP = [
     CompletedParcelComponent,
     CancelledParcelComponent,
     EditParcelComponent,
+    AllPickupmanComponent,
+    AddPickupmanComponent,
+    AddDeliverymanComponent,
+    AllDeliverymanComponent,
   ]
 })
 export class CoreModule { }

@@ -16,6 +16,10 @@ import { EditParcelComponent } from './core/components/parcel/edit-parcel/edit-p
 import { ParcelResolver } from './core/resolvers/parcel.resolver';
 import { PickupmenResolver } from './core/resolvers/pickupmen.resolver';
 import { DeliverymenResolver } from './core/resolvers/deliverymen.resolver';
+import { AddDeliverymanComponent } from './core/components/deliveryman/add-deliveryman/add-deliveryman.component';
+import { AllDeliverymanComponent } from './core/components/deliveryman/all-deliveryman/all-deliveryman.component';
+import { AddPickupmanComponent } from './core/components/pickupman/add-pickupman/add-pickupman.component';
+import { AllPickupmanComponent } from './core/components/pickupman/all-pickupman/all-pickupman.component';
 const routes: Routes = [
   {
     path: "",
@@ -101,6 +105,66 @@ const routes: Routes = [
             },
             data: {
               breadcrumb: "Cancelled"
+            }
+          }
+        ]
+      },
+      {
+        path: "deliveryman",
+        data: {
+          breadcrumb: "Deliveryman"
+        },
+        children: [
+          {
+            path: "",
+            redirectTo: "all",
+            pathMatch: "full"
+          },
+          {
+            path: "add",
+            component: AddDeliverymanComponent,
+            data: {
+              breadcrumb: "Add"
+            }
+          },
+          {
+            path: "all",
+            component: AllDeliverymanComponent,
+            data: {
+              breadcrumb: "All"
+            },
+            resolve: {
+              deliverymen: DeliverymenResolver
+            }
+          }
+        ]
+      },
+      {
+        path: "pickupman",
+        data: {
+          breadcrumb: "Pickupman"
+        },
+        children: [
+          {
+            path: "",
+            redirectTo: "all",
+            pathMatch: "full"
+          },
+          {
+            path: "add",
+            component: AddPickupmanComponent,
+            data: {
+              breadcrumb: "Add"
+            }
+          },
+          {
+            path: "all",
+            component: AllPickupmanComponent,
+            data: {
+              breadcrumb: "All"
+            },
+            resolve: {
+              pickupmen: PickupmenResolver
             }
           }
         ]

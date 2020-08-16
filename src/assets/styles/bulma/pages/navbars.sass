@@ -1,5 +1,5 @@
-$sidebar-background: #252525
-$sidebar-color: #fff
+$sidebar-background: #fff
+$sidebar-color: #252525
 $sidebar-background-active: whitesmoke
 $sidebar-icon-color-active: #363636
 $sidebar-width: 16.5rem
@@ -26,7 +26,7 @@ $header-padding: 2rem
         display: flex
         align-items: center
         justify-content: center
-        margin: 3rem 0
+        margin: 3rem 2rem
         +touch
             margin: 1.5rem 0
 
@@ -67,6 +67,8 @@ $header-padding: 2rem
 
         svg
             margin-right: 0.5rem
+            path 
+                fill: $sidebar-color
     
     +touch
         transform: translateX(-($sidebar-width+1rem))

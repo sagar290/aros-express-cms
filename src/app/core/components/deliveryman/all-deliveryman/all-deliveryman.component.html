@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-content">
+        <div class="table-container">
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Order Completed</th>
+                        <th>Joined</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!deliverymen.length">
+                        <td colspan="5" [ngStyle]="{'height': !deliverymen.length ? '50vh': 'auto'}">No deliveryman
+                            exists!</td>
+                    </tr>
+                    <tr *ngFor="let deliveryman of deliverymen">
+                        <td>{{deliveryman.id}}</td>
+                        <td>{{deliveryman.name}}</td>
+                        <td>{{deliveryman.done_order_count}}</td>
+                        <td>{{getJoinInfo(deliveryman.joined)}}</td>
+                        <td>
+                            <button class="button is-success is-small"
+                                [routerLink]="['/deliveryman', 'details', deliveryman.id]">
+                                Details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

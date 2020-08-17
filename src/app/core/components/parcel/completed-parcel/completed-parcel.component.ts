@@ -20,4 +20,8 @@ export class CompletedParcelComponent implements OnInit {
     this.completeds = this.route.snapshot.data.parcels
   }
 
+  getPaginatedData(query) {
+    this.api.getAllCompletedParcels(query).subscribe(data => this.completeds = data)
+  }
+
 }

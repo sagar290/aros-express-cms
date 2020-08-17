@@ -1,1 +1,134 @@
-<p>add-deliveryman works!</p>
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Deliveryman Details
+                </p>
+            </header>
+            <div class="card-content">
+                <form [formGroup]="deliveryman">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Name</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': name.invalid && name.touched}"
+                                        type="text" formControlName="name">
+                                </p>
+                                <p class="help is-danger" *ngIf="name.invalid && name.touched">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">NID number</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': nid.invalid && nid.touched}"
+                                        type="text" formControlName="nid">
+                                </p>
+                                <p class="help is-danger" *ngIf="nid.invalid && nid.touched">This field is required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Password</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': password.invalid && password.touched}"
+                                        type="text" formControlName="password">
+                                </p>
+                                <p class="help is-danger" *ngIf="password.invalid && password.touched">This field is
+                                    required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Contact</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-expanded">
+                                <div class="field has-addons">
+                                    <p class="control">
+                                        <a class="button is-static">
+                                            +88
+                                        </a>
+                                    </p>
+                                    <p class="control is-expanded">
+                                        <input class="input"
+                                            [ngClass]="{'is-danger': contact.invalid && contact.touched}" type="tel"
+                                            formControlName="contact">
+                                    </p>
+                                </div>
+                                <p class="help is-danger" *ngIf="contact.invalid && contact.touched">Invalid phone
+                                    number format!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Area</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': area.invalid && area.touched}"
+                                        formControlName="area">
+                                </p>
+                                <p class="help is-danger" *ngIf="area.invalid && area.touched">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Location</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" [ngClass]="{'is-danger': location.invalid && location.touched}"
+                                        formControlName="location">
+                                </p>
+                                <p class="help is-danger" *ngIf="location.invalid && location.touched">This field is
+                                    required!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal pt-3">
+                        <div class="field-label is-normal">
+                            <label class="label">Status</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <label class="radio">
+                                        <input type="radio" name="satus" [value]="satus" formControlName="satus">
+                                        Active
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="satus" [value]="!satus" formControlName="satus">
+                                        Inactive
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="my-4 buttons is-centered">
+    <button class="button is-success" (click)="save()">Save</button>
+</div>

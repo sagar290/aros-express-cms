@@ -17,20 +17,23 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  getAllPendingParcels() {
-    return this.http.get(`${environment.api_url}/cms/parcel`).pipe(map((data: any) => data.data))
+  getAllPendingParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel${this.objectToUrl(query)}`)
   }
-  getAllStoredParcels() {
-    return this.http.get(`${environment.api_url}/cms/parcel?status=STORED`).pipe(map((data: any) => data.data))
+  getAllStoredParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=STORED${this.objectToUrl(query)}`)
   }
-  getAllProcessedParcels() {
-    return this.http.get(`${environment.api_url}/cms/parcel?status=PROCESSING`).pipe(map((data: any) => data.data))
+  getAllProcessedParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=PROCESSING${this.objectToUrl(query)}`)
   }
-  getAllCompletedParcels() {
-    return this.http.get(`${environment.api_url}/cms/parcel?status=COMPLETED`).pipe(map((data: any) => data.data))
+  getAllPickedParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=PICKED${this.objectToUrl(query)}`)
   }
-  getAllCancelledParcels() {
-    return this.http.get(`${environment.api_url}/cms/parcel?status=CANCELLED`).pipe(map((data: any) => data.data))
+  getAllCompletedParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=COMPLETED${this.objectToUrl(query)}`)
+  }
+  getAllCancelledParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=CANCELLED${this.objectToUrl(query)}`)
   }
   getParcel(id) {
     return this.http.get(`${environment.api_url}/cms/parcel/${id}`).pipe(map((data: any) => data.data))

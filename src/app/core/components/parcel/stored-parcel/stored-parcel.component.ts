@@ -20,4 +20,8 @@ export class StoredParcelComponent implements OnInit {
     this.storeds = this.route.snapshot.data.parcels
   }
 
+  getPaginatedData(query) {
+    this.api.getAllStoredParcels(query).subscribe(data => this.storeds = data)
+  }
+
 }

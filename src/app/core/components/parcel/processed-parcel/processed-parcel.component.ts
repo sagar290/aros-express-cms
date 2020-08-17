@@ -20,4 +20,7 @@ export class ProcessedParcelComponent implements OnInit {
     this.processeds = this.route.snapshot.data.parcels
   }
 
+  getPaginatedData(query) {
+    this.api.getAllProcessedParcels(query).subscribe(data => this.processeds = data)
+  }
 }

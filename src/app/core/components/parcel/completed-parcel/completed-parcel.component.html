@@ -11,11 +11,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngIf="!completeds.length">
-                        <td colspan="4" [ngStyle]="{'height': !completeds.length ? '50vh': 'auto'}">No parcel is
+                    <tr *ngIf="!completeds.data.length">
+                        <td colspan="4" style="height: 30vh;">No parcel is
                             completed!</td>
                     </tr>
-                    <tr *ngFor="let completed of completeds">
+                    <tr *ngFor="let completed of completeds.data">
                         <td>{{completed.id}}</td>
                         <td>{{completed.merchant.name}}</td>
                         <td>{{completed.merchant.business_name}}</td>
@@ -30,4 +30,30 @@
             </table>
         </div>
     </div>
+    <footer class="card-footer" *ngIf="completeds?.prev_page_url || completeds?.next_page_url">
+        <div class="card-footer-item">
+            <nav class="pagination is-rounded is-centered">
+                <ul class="pagination-list">
+                    <li><button class="pagination-link" title="First Page" [disabled]="!completeds.prev_page_url"
+                            (click)="getPaginatedData({page: 1})"><i class="fas fa-chevron-left"></i><i
+                                class="fas fa-chevron-left"></i></button></li>
+                    <li><button class="pagination-link" title="Previous Page" [disabled]="!completeds.prev_page_url"
+                            (click)="getPaginatedData({page: completeds.current_page - 1})"><i
+                                class="fas fa-chevron-left"></i></button>
+                    </li>
+                    <li class="mx-2">
+                        <small class="small">{{completeds.current_page}} of
+                            {{completeds.last_page}}</small>
+                    </li>
+                    <li><button class="pagination-link" title="Next Page" [disabled]="!completeds.next_page_url"
+                            (click)="getPaginatedData({page: completeds.current_page + 1})"><i
+                                class="fas fa-chevron-right"></i></button>
+                    </li>
+                    <li><button class="pagination-link" title="Last Page" [disabled]="!completeds.next_page_url"
+                            (click)="getPaginatedData({page: completeds.last_page})"><i
+                                class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></button></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 </div>

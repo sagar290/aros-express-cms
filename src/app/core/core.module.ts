@@ -19,6 +19,7 @@ import { PendingParcelsResolver } from './resolvers/pending-parcels.resolver';
 import { CancelledParcelsResolver } from './resolvers/cancelled-parcels.resolver';
 import { CompletedParcelsResolver } from './resolvers/completed-parcels.resolver';
 import { ProcessedParcelsResolver } from './resolvers/processed-parcels.resolver';
+import { PickedParcelsResolver } from './resolvers/picked-parcles.resolver';
 import { StoredParcelsResolver } from './resolvers/stored-parcels.resolver';
 import { ParcelResolver } from './resolvers/parcel.resolver';
 import { PickupmenResolver } from './resolvers/pickupmen.resolver';
@@ -35,6 +36,10 @@ import { AllPickupmanComponent } from './components/pickupman/all-pickupman/all-
 import { AddPickupmanComponent } from './components/pickupman/add-pickupman/add-pickupman.component';
 import { AddDeliverymanComponent } from './components/deliveryman/add-deliveryman/add-deliveryman.component';
 import { AllDeliverymanComponent } from './components/deliveryman/all-deliveryman/all-deliveryman.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditDeliverymanComponent } from './components/deliveryman/edit-deliveryman/edit-deliveryman.component';
+import { EditPickupmanComponent } from './components/pickupman/edit-pickupman/edit-pickupman.component';
+import { PickedParcelComponent } from './components/parcel/picked-parcel/picked-parcel.component';
 
 const IMP_EXP = [
   HeaderComponent,
@@ -59,7 +64,10 @@ const IMP_EXP = [
     AllPickupmanComponent,
     AddPickupmanComponent,
     AddDeliverymanComponent,
-    AllDeliverymanComponent
+    AllDeliverymanComponent,
+    EditDeliverymanComponent,
+    EditPickupmanComponent,
+    PickedParcelComponent
   ],
   imports: [
     CommonModule,
@@ -69,6 +77,7 @@ const IMP_EXP = [
     NgxMaterialTimepickerModule.setLocale('bn-BD'),
     CustomMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     QuillModule.forRoot({
       modules: {
         toolbar: [
@@ -107,6 +116,7 @@ const IMP_EXP = [
     ParcelResolver,
     PickupmenResolver,
     DeliverymenResolver,
+    PickedParcelsResolver,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpTokenInterceptor,
@@ -126,6 +136,9 @@ const IMP_EXP = [
     AddPickupmanComponent,
     AddDeliverymanComponent,
     AllDeliverymanComponent,
+    EditDeliverymanComponent,
+    EditPickupmanComponent,
+    PickedParcelComponent,
   ]
 })
 export class CoreModule { }

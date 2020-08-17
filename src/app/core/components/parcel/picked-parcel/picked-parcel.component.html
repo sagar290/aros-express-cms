@@ -11,16 +11,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngIf="!storeds.data.length">
+                    <tr *ngIf="!pickeds.data.length">
                         <td colspan="4" style="height: 30vh;">No parcel is
-                            processed!</td>
+                            picked!</td>
                     </tr>
-                    <tr *ngFor="let stored of storeds.data">
-                        <td>{{stored.id}}</td>
-                        <td>{{stored.merchant.name}}</td>
-                        <td>{{stored.merchant.business_name}}</td>
+                    <tr *ngFor="let picked of pickeds.data">
+                        <td>{{picked.id}}</td>
+                        <td>{{picked.merchant}}</td>
+                        <td>{{picked.customer_name}}</td>
                         <td>
-                            <button class="button is-success is-small" [routerLink]="['/parcel', 'details', stored.id]">
+                            <button class="button is-success is-small" [routerLink]="['/parcel', 'pickeds', picked.id]">
                                 Details
                             </button>
                         </td>
@@ -29,27 +29,27 @@
             </table>
         </div>
     </div>
-    <footer class="card-footer" *ngIf="storeds?.prev_page_url || storeds?.next_page_url">
+    <footer class="card-footer" *ngIf="pickeds?.prev_page_url || pickeds?.next_page_url">
         <div class="card-footer-item">
             <nav class="pagination is-rounded is-centered">
                 <ul class="pagination-list">
-                    <li><button class="pagination-link" title="First Page" [disabled]="!storeds.prev_page_url"
+                    <li><button class="pagination-link" title="First Page" [disabled]="!pickeds.prev_page_url"
                             (click)="getPaginatedData({page: 1})"><i class="fas fa-chevron-left"></i><i
                                 class="fas fa-chevron-left"></i></button></li>
-                    <li><button class="pagination-link" title="Previous Page" [disabled]="!storeds.prev_page_url"
-                            (click)="getPaginatedData({page: storeds.current_page - 1})"><i
+                    <li><button class="pagination-link" title="Previous Page" [disabled]="!pickeds.prev_page_url"
+                            (click)="getPaginatedData({page: pickeds.current_page - 1})"><i
                                 class="fas fa-chevron-left"></i></button>
                     </li>
                     <li class="mx-2">
-                        <small class="small">{{storeds.current_page}} of
-                            {{storeds.last_page}}</small>
+                        <small class="small">{{pickeds.current_page}} of
+                            {{pickeds.last_page}}</small>
                     </li>
-                    <li><button class="pagination-link" title="Next Page" [disabled]="!storeds.next_page_url"
-                            (click)="getPaginatedData({page: storeds.current_page + 1})"><i
+                    <li><button class="pagination-link" title="Next Page" [disabled]="!pickeds.next_page_url"
+                            (click)="getPaginatedData({page: pickeds.current_page + 1})"><i
                                 class="fas fa-chevron-right"></i></button>
                     </li>
-                    <li><button class="pagination-link" title="Last Page" [disabled]="!storeds.next_page_url"
-                            (click)="getPaginatedData({page: storeds.last_page})"><i class="fas fa-chevron-right"></i><i
+                    <li><button class="pagination-link" title="Last Page" [disabled]="!pickeds.next_page_url"
+                            (click)="getPaginatedData({page: pickeds.last_page})"><i class="fas fa-chevron-right"></i><i
                                 class="fas fa-chevron-right"></i></button></li>
                 </ul>
             </nav>

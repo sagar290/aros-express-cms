@@ -19,4 +19,8 @@ export class PendingParcelComponent implements OnInit {
     this.pendings = this.route.snapshot.data.parcels
   }
 
+  getPaginatedData(query) {
+    this.api.getAllPendingParcels(query).subscribe(data => this.pendings = data)
+  }
+
 }

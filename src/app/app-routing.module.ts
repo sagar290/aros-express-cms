@@ -20,6 +20,8 @@ import { AddDeliverymanComponent } from './core/components/deliveryman/add-deliv
 import { AllDeliverymanComponent } from './core/components/deliveryman/all-deliveryman/all-deliveryman.component';
 import { AddPickupmanComponent } from './core/components/pickupman/add-pickupman/add-pickupman.component';
 import { AllPickupmanComponent } from './core/components/pickupman/all-pickupman/all-pickupman.component';
+import { PickedParcelComponent } from './core/components/parcel/picked-parcel/picked-parcel.component';
+import { PickedParcelsResolver } from './core/resolvers/picked-parcles.resolver';
 const routes: Routes = [
   {
     path: "",
@@ -85,6 +87,16 @@ const routes: Routes = [
             },
             data: {
               breadcrumb: "Processed"
+            }
+          },
+          {
+            path: "picked",
+            component: PickedParcelComponent,
+            resolve: {
+              parcels: PickedParcelsResolver
+            },
+            data: {
+              breadcrumb: "Picked"
             }
           },
           {

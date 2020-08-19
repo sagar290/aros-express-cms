@@ -16,6 +16,21 @@ export class EditParcelComponent implements OnInit {
   pickupmen
   deliverymen
 
+  allStatus = [
+    {
+      title: "Stored",
+      value: "STORED"
+    },
+    {
+      title: "Ready",
+      value: "READY"
+    },
+    {
+      title: "Cancelled",
+      value: "CANCELLED"
+    }
+  ]
+
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
@@ -41,24 +56,24 @@ export class EditParcelComponent implements OnInit {
     })
   }
 
-  cancelOrder() {
+  getContact(contact) {
+    return contact.split('').reduce((acc, el, i) => {
+      if (i <= 2) return ""
+      if (i > 2 && el) return `${acc}${el}`
+    }, "")
+  }
+
+  changeParcelStatus(data) {
     this.common.confirm.subscribe(confirm => {
       if (confirm) {
-        this.edited = false
-        this.api.cancelParcel(this.parcel.id, {
-          "pickup_address": this.parcel.pickup_address,
-          "customer_name": this.parcel.customer_name,
-          "customer_address": this.parcel.customer_address,
-          "customer_city": this.parcel.customer_city,
-          "customer_area": this.parcel.customer_area,
-          "customer_contact": this.parcel.customer_contact,
-          "category": this.parcel.category,
-          "payment_amont": this.parcel.payment_amount,
-          "merchant_no": this.parcel.merchant_no,
-          "product_additional_info": this.parcel.product_additional_info,
-          "product_net_weight": this.parcel.product_net_weight
-        }).subscribe(data => {
-          this.snackbar.open('Cancelled Successfully', 'close', {
+        this.api.postParcelStatus(this.parcel.id, data).subscribe((data: any) => {
+          console.log(data);
+
+          this.snackbar.open('Status Changed!', 'close', {
+            duration: 4000
+          })
+        }, (e) => {
+          this.snackbar.open(`${e.error.message}`, 'close', {
             duration: 4000
           })
         })
@@ -76,7 +91,7 @@ export class EditParcelComponent implements OnInit {
           "customer_address": this.parcel.customer_address,
           "customer_city": this.parcel.customer_city,
           "customer_area": this.parcel.customer_area,
-          "customer_contact": this.parcel.customer_contact,
+          "customer_contact": `+88${this.parcel.customer_contact}`,
           "category": this.parcel.category,
           "payment_amont": this.parcel.payment_amount,
           "merchant_no": this.parcel.merchant_no,

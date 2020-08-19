@@ -19,7 +19,7 @@ export class AllDeliverymanComponent implements OnInit {
   }
 
   getJoinInfo(date) {
-    return date.split(' ')[0]
+    return date ? date.split(' ')[0] : "-"
   }
 
 }

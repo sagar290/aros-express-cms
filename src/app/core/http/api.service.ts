@@ -23,14 +23,20 @@ export class ApiService {
   getAllStoredParcels(query = {}) {
     return this.http.get(`${environment.api_url}/cms/parcel?status=STORED${this.objectToUrl(query)}`)
   }
-  getAllProcessedParcels(query = {}) {
+  getAllProcessingParcels(query = {}) {
     return this.http.get(`${environment.api_url}/cms/parcel?status=PROCESSING${this.objectToUrl(query)}`)
   }
   getAllPickedParcels(query = {}) {
     return this.http.get(`${environment.api_url}/cms/parcel?status=PICKED${this.objectToUrl(query)}`)
   }
-  getAllCompletedParcels(query = {}) {
-    return this.http.get(`${environment.api_url}/cms/parcel?status=COMPLETED${this.objectToUrl(query)}`)
+  getAllReadyParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=READY${this.objectToUrl(query)}`)
+  }
+  getAllInprogressParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=INPROGRESS${this.objectToUrl(query)}`)
+  }
+  getAllDeliveredParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=DELIVERED${this.objectToUrl(query)}`)
   }
   getAllCancelledParcels(query = {}) {
     return this.http.get(`${environment.api_url}/cms/parcel?status=CANCELLED${this.objectToUrl(query)}`)
@@ -41,13 +47,19 @@ export class ApiService {
   editParcel(id, data) {
     return this.http.patch(`${environment.api_url}/cms/parcel/${id}`, data).pipe(map((data: any) => data.data))
   }
-  cancelParcel(id, data) {
-    return this.http.post(`${environment.api_url}/cms/parcel/${id}`, data).pipe(map((data: any) => data.data))
+  postParcelStatus(id, data) {
+    return this.http.post(`${environment.api_url}/cms/parcel/${id}/status`, data)
   }
 
   // pickupman
   getAllPickupman() {
     return this.http.get(`${environment.api_url}/cms/pickupman/all`).pipe(map((data: any) => data.data))
+  }
+  editPickupman(id, data) {
+    return this.http.patch(`${environment.api_url}/cms/pickupman/${id}`, data).pipe(map((data: any) => data.data))
+  }
+  getPickupman(id) {
+    return this.http.get(`${environment.api_url}/cms/pickupman/${id}`).pipe(map((data: any) => data.data))
   }
   addPickupman(data) {
     return this.http.post(`${environment.api_url}/cms/pickupman`, data).pipe(map((data: any) => data.data))
@@ -61,48 +73,16 @@ export class ApiService {
   getAllDeliveryman() {
     return this.http.get(`${environment.api_url}/cms/deliveryman/all`).pipe(map((data: any) => data.data))
   }
+  editDeliveryman(id, data) {
+    return this.http.patch(`${environment.api_url}/cms/deliveryman/${id}`, data).pipe(map((data: any) => data.data))
+  }
+  getDeliveryman(id) {
+    return this.http.get(`${environment.api_url}/cms/deliveryman/${id}`).pipe(map((data: any) => data.data))
+  }
   addDeliveryman(data) {
     return this.http.post(`${environment.api_url}/cms/deliveryman`, data).pipe(map((data: any) => data.data))
   }
 
-  // promo
-
-  getPromosPaginated(query = {}) {
-    return this.http.get(`${environment.api_url}/v1/discount/promo-codes?${this.objectToUrl(query)}`).pipe(map((data: any) => data.data))
-  }
-
-  getPromo(id) {
-    return this.http.get(`${environment.api_url}/v1/discount/promo-code/${id}`).pipe(map((data: any) => data.data))
-  }
-
-  updatePromo(id, data) {
-    return this.http.put(`${environment.api_url}/v1/discount/promo-code/${id}`, data)
-  }
-
-  postPromo(data) {
-    return this.http.post(`${environment.api_url}/v1/discount/promo-code`, data).pipe(map((data: any) => data.data))
-  }
-
-  // reports > transactions
-  getTransactionInfoByDate(date, query = {}) {
-    return this.http.get(`${environment.api_url}/v1/transactions/total/date/${date}?${this.objectToUrl(query)}`).pipe(map((data: any) => data.data))
-  }
-  getTransactionByDate(date, query = {}) {
-    return this.http.get(`${environment.api_url}/v1/transactions/date/${date}?${this.objectToUrl(query)}`).pipe(map((data: any) => data.data))
-  }
-  getTransactionDetailesByDate(date, query = {}) {
-    return this.http.get(`${environment.api_url}/v1/transactions/details/date/${date}?${this.objectToUrl(query)}`).pipe(map((data: any) => data.data))
-  }
-
-  getTransactionInfoByDateRange(start, end) {
-    return this.http.get(`${environment.api_url}/v1/transactions/total/date-range/${start}/${end}`).pipe(map((data: any) => data.data))
-  }
-  getTransactionsByDateRange(start, end) {
-    return this.http.get(`${environment.api_url}/v1/transactions/date-range/${start}/${end}`).pipe(map((data: any) => data.data))
-  }
-  getTransactionDetailsByDateRange(start, end, query = {}) {
-    return this.http.get(`${environment.api_url}/v1/transactions/details/date-range/${start}/${end}?${this.objectToUrl(query)}`).pipe(map((data: any) => data.data))
-  }
 
   postS3SignedLink(file_timestamp, file_extension, file_type, path) {
     return this.http.post(`${environment.api_url}/api/getpostvideourl`,

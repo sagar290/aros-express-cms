@@ -4,12 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-completed-parcel',
-  templateUrl: './completed-parcel.component.html',
-  styleUrls: ['./completed-parcel.component.scss']
+  templateUrl: './delivered-parcel.component.html',
+  styleUrls: ['./delivered-parcel.component.scss']
 })
-export class CompletedParcelComponent implements OnInit {
+export class DeliveredParcelComponent implements OnInit {
 
-  completeds
+  delivereds
 
   constructor(
     private api: ApiService,
@@ -17,11 +17,11 @@ export class CompletedParcelComponent implements OnInit {
   ) {  }
 
   ngOnInit(): void {
-    this.completeds = this.route.snapshot.data.parcels
+    this.delivereds = this.route.snapshot.data.parcels
   }
 
   getPaginatedData(query) {
-    this.api.getAllCompletedParcels(query).subscribe(data => this.completeds = data)
+    this.api.getAllDeliveredParcels(query).subscribe(data => this.delivereds = data)
   }
 
 }

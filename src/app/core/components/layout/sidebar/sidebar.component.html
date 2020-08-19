@@ -16,13 +16,17 @@
                 <ul>
                     <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'pending']">Pending</a>
                     </li>
-                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'stored']">Stored</a>
-                    </li>
-                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'processed']">Processed</a>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'processing']">Processing</a>
                     </li>
                     <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'picked']">Picked</a>
                     </li>
-                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'completed']">Completed</a>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'stored']">Stored</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'ready']">Ready</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'inprogress']">In Progress</a>
+                    </li>
+                    <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'delivered']">Delivered</a>
                     </li>
                     <li><a routerLinkActive="is-active" [routerLink]="['/parcel', 'cancelled']">Cancelled</a>
                     </li>

@@ -4,12 +4,10 @@ import { LayoutComponent } from './core/components/layout/layout.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { PendingParcelComponent } from './core/components/parcel/pending-parcel/pending-parcel.component';
 import { StoredParcelComponent } from './core/components/parcel/stored-parcel/stored-parcel.component';
-import { ProcessedParcelComponent } from './core/components/parcel/processed-parcel/processed-parcel.component';
-import { CompletedParcelComponent } from './core/components/parcel/completed-parcel/completed-parcel.component';
+import { DeliveredParcelComponent } from './core/components/parcel/delivered-parcel/delivered-parcel.component';
 import { PendingParcelsResolver } from './core/resolvers/pending-parcels.resolver';
 import { StoredParcelsResolver } from './core/resolvers/stored-parcels.resolver';
-import { ProcessedParcelsResolver } from './core/resolvers/processed-parcels.resolver';
-import { CompletedParcelsResolver } from './core/resolvers/completed-parcels.resolver';
+import { DeliveredParcelsResolver } from './core/resolvers/delivered-parcels.resolver';
 import { CancelledParcelComponent } from './core/components/parcel/cancelled-parcel/cancelled-parcel.component';
 import { CancelledParcelsResolver } from './core/resolvers/cancelled-parcels.resolver';
 import { EditParcelComponent } from './core/components/parcel/edit-parcel/edit-parcel.component';
@@ -22,6 +20,16 @@ import { AddPickupmanComponent } from './core/components/pickupman/add-pickupman
 import { AllPickupmanComponent } from './core/components/pickupman/all-pickupman/all-pickupman.component';
 import { PickedParcelComponent } from './core/components/parcel/picked-parcel/picked-parcel.component';
 import { PickedParcelsResolver } from './core/resolvers/picked-parcles.resolver';
+import { EditDeliverymanComponent } from './core/components/deliveryman/edit-deliveryman/edit-deliveryman.component';
+import { DeliverymanResolver } from './core/resolvers/deliveryman.resolver';
+import { EditPickupmanComponent } from './core/components/pickupman/edit-pickupman/edit-pickupman.component';
+import { PickupmanResolver } from './core/resolvers/pickupman.resolver';
+import { ProcessingParcelsResolver } from './core/resolvers/processing-parcels.resolver';
+import { ProcessingParcelComponent } from './core/components/parcel/processing-parcel/processing-parcel.component';
+import { InprogressParcelComponent } from './core/components/parcel/inprogress-parcel/inprogress-parcel.component';
+import { InprogressParcelsResolver } from './core/resolvers/inprogress-parcels.resolver';
+import { ReadyParcelComponent } from './core/components/parcel/ready-parcel/ready-parcel.component';
+import { ReadyParcelsResolver } from './core/resolvers/ready-parcels.resolver';
 const routes: Routes = [
   {
     path: "",
@@ -80,13 +88,33 @@ const routes: Routes = [
             }
           },
           {
-            path: "processed",
-            component: ProcessedParcelComponent,
+            path: "processing",
+            component: ProcessingParcelComponent,
             resolve: {
-              parcels: ProcessedParcelsResolver
+              parcels: ProcessingParcelsResolver
             },
             data: {
-              breadcrumb: "Processed"
+              breadcrumb: "Processing"
+            }
+          },
+          {
+            path: "inprogress",
+            component: InprogressParcelComponent,
+            resolve: {
+              parcels: InprogressParcelsResolver
+            },
+            data: {
+              breadcrumb: "In Progress"
+            }
+          },
+          {
+            path: "ready",
+            component: ReadyParcelComponent,
+            resolve: {
+              parcels: ReadyParcelsResolver
+            },
+            data: {
+              breadcrumb: "Ready"
             }
           },
           {
@@ -100,13 +128,13 @@ const routes: Routes = [
             }
           },
           {
-            path: "completed",
-            component: CompletedParcelComponent,
+            path: "delivered",
+            component: DeliveredParcelComponent,
             resolve: {
-              parcels: CompletedParcelsResolver
+              parcels: DeliveredParcelsResolver
             },
             data: {
-              breadcrumb: "Completed"
+              breadcrumb: "Delivered"
             }
           },
           {
@@ -148,6 +176,24 @@ const routes: Routes = [
             resolve: {
               deliverymen: DeliverymenResolver
             }
+          },
+          {
+            path: "details",
+            data: {
+              breadcrumb: "Details"
+            },
+            children: [
+              {
+                path: ":deliveryman_id",
+                component: EditDeliverymanComponent,
+                resolve: {
+                  deliveryman: DeliverymanResolver
+                },
+                data: {
+                  breadcrumb: ""
+                }
+              }
+            ]
           }
         ]
       },
@@ -178,6 +224,24 @@ const routes: Routes = [
             resolve: {
               pickupmen: PickupmenResolver
             }
+          },
+          {
+            path: "details",
+            data: {
+              breadcrumb: "Details"
+            },
+            children: [
+              {
+                path: ":pickupman_id",
+                component: EditPickupmanComponent,
+                resolve: {
+                  pickupman: PickupmanResolver
+                },
+                data: {
+                  breadcrumb: ""
+                }
+              }
+            ]
           }
         ]
       }

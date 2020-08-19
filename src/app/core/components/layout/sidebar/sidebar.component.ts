@@ -19,8 +19,8 @@ export class SidebarComponent implements OnInit {
   }
 
   parcel: boolean = true
-  pickupMan: boolean = false
-  deliveryMan: boolean = false
+  pickupMan: boolean = true
+  deliveryMan: boolean = true
 
   drawerAcivated: boolean = false
   hideDrawer() {

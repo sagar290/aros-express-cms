@@ -11,17 +11,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngIf="!processeds.data.length">
+                    <tr *ngIf="!inprogresses.data.length">
                         <td colspan="4" style="height: 30vh;">No parcel is
-                            processed!</td>
+                            in progress!</td>
                     </tr>
-                    <tr *ngFor="let processed of processeds.data">
-                        <td>{{processed.id}}</td>
-                        <td>{{processed.merchant.name}}</td>
-                        <td>{{processed.merchant.business_name}}</td>
+                    <tr *ngFor="let inprogress of inprogresses.data">
+                        <td>{{inprogress.id}}</td>
+                        <td>{{inprogress.merchant.name}}</td>
+                        <td>{{inprogress.merchant.business_name}}</td>
                         <td>
                             <button class="button is-success is-small"
-                                [routerLink]="['/parcel', 'details', processed.id]">
+                                [routerLink]="['/parcel', 'details', inprogress.id]">
                                 Details
                             </button>
                         </td>
@@ -30,27 +30,27 @@
             </table>
         </div>
     </div>
-    <footer class="card-footer" *ngIf="processeds?.prev_page_url || processeds?.next_page_url">
+    <footer class="card-footer" *ngIf="inprogresses?.prev_page_url || inprogresses?.next_page_url">
         <div class="card-footer-item">
             <nav class="pagination is-rounded is-centered">
                 <ul class="pagination-list">
-                    <li><button class="pagination-link" title="First Page" [disabled]="!processeds.prev_page_url"
+                    <li><button class="pagination-link" title="First Page" [disabled]="!inprogresses.prev_page_url"
                             (click)="getPaginatedData({page: 1})"><i class="fas fa-chevron-left"></i><i
                                 class="fas fa-chevron-left"></i></button></li>
-                    <li><button class="pagination-link" title="Previous Page" [disabled]="!processeds.prev_page_url"
-                            (click)="getPaginatedData({page: processeds.current_page - 1})"><i
+                    <li><button class="pagination-link" title="Previous Page" [disabled]="!inprogresses.prev_page_url"
+                            (click)="getPaginatedData({page: inprogresses.current_page - 1})"><i
                                 class="fas fa-chevron-left"></i></button>
                     </li>
                     <li class="mx-2">
-                        <small class="small">{{processeds.current_page}} of
-                            {{processeds.last_page}}</small>
+                        <small class="small">{{inprogresses.current_page}} of
+                            {{inprogresses.last_page}}</small>
                     </li>
-                    <li><button class="pagination-link" title="Next Page" [disabled]="!processeds.next_page_url"
-                            (click)="getPaginatedData({page: processeds.current_page + 1})"><i
+                    <li><button class="pagination-link" title="Next Page" [disabled]="!inprogresses.next_page_url"
+                            (click)="getPaginatedData({page: inprogresses.current_page + 1})"><i
                                 class="fas fa-chevron-right"></i></button>
                     </li>
-                    <li><button class="pagination-link" title="Last Page" [disabled]="!processeds.next_page_url"
-                            (click)="getPaginatedData({page: processeds.last_page})"><i
+                    <li><button class="pagination-link" title="Last Page" [disabled]="!inprogresses.next_page_url"
+                            (click)="getPaginatedData({page: inprogresses.last_page})"><i
                                 class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></button></li>
                 </ul>
             </nav>

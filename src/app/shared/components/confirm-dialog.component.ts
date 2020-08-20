@@ -11,7 +11,7 @@ import { Component, OnInit, Inject } from '@angular/core';
         {{title}}
         </h1>
 
-        <div mat-dialog-content>
+        <div mat-dialog-content style="overflow: unset;">
         <span [innerHTML]="message"></span>
         </div>
 

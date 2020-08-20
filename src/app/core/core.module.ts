@@ -43,27 +43,27 @@ import { InprogressParcelComponent } from './components/parcel/inprogress-parcel
 const IMP_EXP = [
   HeaderComponent,
   SidebarComponent,
-  LayoutComponent
+  LayoutComponent,
+  PendingParcelComponent,
+  StoredParcelComponent,
+  ProcessingParcelComponent,
+  DeliveredParcelComponent,
+  CancelledParcelComponent,
+  EditParcelComponent,
+  AllPickupmanComponent,
+  AddPickupmanComponent,
+  AddDeliverymanComponent,
+  AllDeliverymanComponent,
+  EditDeliverymanComponent,
+  EditPickupmanComponent,
+  PickedParcelComponent,
+  ReadyParcelComponent,
+  InprogressParcelComponent
 ]
 
 @NgModule({
   declarations: [
-    ...IMP_EXP,
-    PendingParcelComponent,
-    StoredParcelComponent,
-    ProcessingParcelComponent,
-    DeliveredParcelComponent,
-    CancelledParcelComponent,
-    EditParcelComponent,
-    AllPickupmanComponent,
-    AddPickupmanComponent,
-    AddDeliverymanComponent,
-    AllDeliverymanComponent,
-    EditDeliverymanComponent,
-    EditPickupmanComponent,
-    PickedParcelComponent,
-    ReadyParcelComponent,
-    InprogressParcelComponent
+    ...IMP_EXP
   ],
   imports: [
     CommonModule,
@@ -97,22 +97,7 @@ const IMP_EXP = [
   ],
   exports: [
     ...IMP_EXP,
-    CustomMaterialModule,
-    PendingParcelComponent,
-    StoredParcelComponent,
-    ProcessingParcelComponent,
-    DeliveredParcelComponent,
-    CancelledParcelComponent,
-    EditParcelComponent,
-    AllPickupmanComponent,
-    AddPickupmanComponent,
-    AddDeliverymanComponent,
-    AllDeliverymanComponent,
-    EditDeliverymanComponent,
-    EditPickupmanComponent,
-    PickedParcelComponent,
-    ReadyParcelComponent,
-    InprogressParcelComponent
+    CustomMaterialModule
   ]
 })
 export class CoreModule { }

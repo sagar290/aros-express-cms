@@ -80,7 +80,7 @@ export class AddPickupmanComponent implements OnInit {
         }
       })
     } else {
-      this.snackbar.open('Form is incomplete, fill up accordingly!', 'close', {
+      this.snackbar.open('Form is incomplete, fill up every field!', 'close', {
         duration: 4000
       })
     }

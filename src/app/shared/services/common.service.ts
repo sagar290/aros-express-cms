@@ -18,18 +18,4 @@ export class CommonService {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, { minWidth: '300px', maxWidth: '500px', data: dialogData });
     return dialogRef.afterClosed()
   }
-
-  public getDate(date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2)
-      day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
 }

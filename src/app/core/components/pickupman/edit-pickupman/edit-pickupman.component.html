@@ -39,8 +39,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input"
-                                        [ngClass]="{'editable': edited, 'is-danger': nid.invalid}"
+                                    <input class="input" [ngClass]="{'editable': edited, 'is-danger': nid.invalid}"
                                         type="text" formControlName="nid">
                                 </p>
                                 <p class="help is-danger" *ngIf="nid.invalid && edited">This field is required!</p>
@@ -68,14 +67,14 @@
                             <label class="label">Contact</label>
                         </div>
                         <div class="field-body">
-                            <div class="field is-expanded">
-                                <div class="field has-addons">
-                                    <p class="control">
+                            <div class="field" [ngClass]="{'is-expanded': edited}">
+                                <div class="field" [ngClass]="{'has-addons': edited}">
+                                    <p class="control" *ngIf="edited">
                                         <a class="button is-static">
                                             +88
                                         </a>
                                     </p>
-                                    <p class="control is-expanded">
+                                    <p class="control" [ngClass]="{'is-expanded': edited}">
                                         <input class="input"
                                             [ngClass]="{'editable': edited, 'is-danger': contact.invalid && edited}"
                                             type="tel" formControlName="contact">
@@ -125,20 +124,80 @@
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <label class="radio">
-                                        <input type="radio" name="satus" value="1" formControlName="satus">
-                                        Active
-                                    </label>
-                                    <label class="radio">
-                                        <input type="radio" name="satus" value="0" formControlName="satus">
-                                        Inactive
-                                    </label>
+                                    <mat-radio-group formControlName="satus">
+                                        <mat-radio-button value="1" [checked]="satus.value == 1">Active
+                                        </mat-radio-button>
+                                        <mat-radio-button value="0" [checked]="satus.value == 0">Inactive
+                                        </mat-radio-button>
+                                    </mat-radio-group>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+<div class="columns mt-4">
+    <div class="column">
+        <div class="card">
+            <div class="card-header">
+                <p class="card-header-title">DP</p>
+            </div>
+            <div class="card-content">
+                <div class="flex-center flex-column">
+                    <p *ngIf="!pman.dp">No image available!</p>
+                    <figure class="image" *ngIf="pman.dp">
+                        <img [src]="pman.dp">
+                    </figure>
+                </div>
+            </div>
+            <footer class="card-footer is-relative">
+                <input class="file-input" type="file" name="dp" (change)="onDpChange($event.target.files)"
+                    accept="image/*">
+                <a class="card-footer-item">Change</a>
+            </footer>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <div class="card-header">
+                <p class="card-header-title">NID (front side)</p>
+            </div>
+            <div class="card-content">
+                <div class="flex-center flex-column">
+                    <p *ngIf="!pman.nid_front">No image available!</p>
+                    <figure class="image" *ngIf="pman.nid_front">
+                        <img [src]="pman.nid_front">
+                    </figure>
+                </div>
+            </div>
+            <footer class="card-footer is-relative">
+                <input class="file-input" type="file" name="nidfront" (change)="onNidFrontChange($event.target.files)"
+                    accept="image/*">
+                <a class="card-footer-item">Change</a>
+            </footer>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <div class="card-header">
+                <p class="card-header-title">NID (back side)</p>
+            </div>
+            <div class="card-content">
+                <div class="flex-center flex-column">
+                    <p *ngIf="!pman.nid_back">No image available!</p>
+                    <figure class="image" *ngIf="pman.nid_back">
+                        <img [src]="pman.nid_back">
+                    </figure>
+                </div>
+            </div>
+            <footer class="card-footer is-relative">
+                <input class="file-input" type="file" name="nidback" (change)="onNidBackChange($event.target.files)"
+                    accept="image/*">
+                <a class="card-footer-item">Change</a>
+            </footer>
         </div>
     </div>
 </div>

@@ -94,7 +94,7 @@ export class EditParcelComponent implements OnInit {
           "customer_contact": `+88${this.parcel.customer_contact}`,
           "category": this.parcel.category,
           "payment_amont": this.parcel.payment_amount,
-          "merchant_no": this.parcel.merchant_no,
+          "merchant_no": `+88${this.parcel.merchant_no}`,
           "product_additional_info": this.parcel.product_additional_info,
           "product_net_weight": this.parcel.product_net_weight
         }).subscribe(data => {

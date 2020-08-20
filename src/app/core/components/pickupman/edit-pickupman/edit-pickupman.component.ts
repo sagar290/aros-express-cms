@@ -42,7 +42,6 @@ export class EditPickupmanComponent implements OnInit {
       area: this.pman.area,
       satus: this.pman.status
     })
-    console.log(this.pickupman.getRawValue());
   }
 
   getContact(contact) {
@@ -51,24 +50,80 @@ export class EditPickupmanComponent implements OnInit {
       if (i > 2 && el) return `${acc}${el}`
     }, "")
   }
+  base64Image
+
+  onDpChange(files) {
+    let reader = new FileReader(), instance = this
+    reader.readAsDataURL(files[0]);
+    reader.onload = function () {
+      instance.common.confirm.subscribe(confirm => {
+        if (confirm) {
+          instance.postDp({ dp: reader.result.toString() })
+        }
+      })
+    }
+  }
+  onNidFrontChange(files) {
+    let reader = new FileReader(), instance = this
+    reader.readAsDataURL(files[0]);
+    reader.onload = function () {
+      instance.common.confirm.subscribe(confirm => {
+        if (confirm) {
+          instance.postDp({ nid_front: reader.result.toString() })
+        }
+      })
+    }
+  }
+  onNidBackChange(files) {
+    let reader = new FileReader(), instance = this
+    reader.readAsDataURL(files[0]);
+    reader.onload = function () {
+      instance.common.confirm.subscribe(confirm => {
+        if (confirm) {
+          instance.postDp({ nid_back: reader.result.toString() })
+        }
+      })
+    }
+  }
+
+  postDp(data) {
+    this.api.editPickupman(this.pman.id, data).subscribe(data => {
+      this.pman = data
+      this.snackbar.open('Image changed successfully!', 'close', {
+        duration: 4000
+      })
+    })
+  }
 
   save() {
-    console.log(this.pickupman.getRawValue());
-
-
-    // this.common.confirm.subscribe(confirm => {
-    //   if (confirm) {
-    //     this.api.editPickupman(this.pman.id, 'aa').subscribe(data => {
-    //       this.snackbar.open('Edited Successfully!', 'close', {
-    //         duration: 4000
-    //       })
-    //     }, (e) => {
-    //       this.snackbar.open(`${e.error.message}`, 'close', {
-    //         duration: 4000
-    //       })
-    //     })
-    //   }
-    // })
+    if (this.pickupman.valid) {
+      this.common.confirm.subscribe(confirm => {
+        if (confirm) {
+          this.api.editPickupman(this.pman.id, {
+            contact: `+88${this.pickupman.get('contact').value}`,
+            password: this.pickupman.get('password').value,
+            name: this.pickupman.get('name').value,
+            nid: this.pickupman.get('nid').value,
+            location: this.pickupman.get('location').value,
+            area: this.pickupman.get('area').value,
+            satus: this.pickupman.get('satus').value == 1 ? true : false
+          }).subscribe(data => {
+            this.edited = false
+            this.snackbar.open('Edited Successfully', 'close', {
+              duration: 4000
+            })
+          }, (e: any) => {
+            this.snackbar.open(e.error.message, 'close', {
+              duration: 4000
+            })
+          })
+        }
+      })
+    } else {
+      this.snackbar.open('Form is incomplete, fill up every field!', 'close', {
+        duration: 4000
+      })
+    }
   }
 
   get name() {

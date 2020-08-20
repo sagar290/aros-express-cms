@@ -319,7 +319,7 @@
                             <div class="field">
                                 <p class="control">
                                     <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.merchant_no"
+                                        [value]="getContact(parcel.merchant_no)"
                                         (change)="parcel.merchant_no = $event.target.value">
                                 </p>
                             </div>

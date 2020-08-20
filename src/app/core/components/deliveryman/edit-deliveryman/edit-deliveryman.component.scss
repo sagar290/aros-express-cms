@@ -1,0 +1,41 @@
+.input {
+    border: 0;
+    pointer-events: none;
+
+    &.editable {
+        border: 1px solid #bfbfbf;
+        pointer-events: visible;
+    }
+
+    &.is-danger {
+        border-color: #f14668 !important;
+    }
+}
+
+.file {
+    .file-label {
+        justify-content: center;
+
+        .file-cta {
+            width: 100%;
+        }
+    }
+}
+
+.file-input {
+    cursor: pointer;
+}
+
+.flex-center {
+    height: 300px;
+}
+
+.image {
+    text-align: center;
+
+    img {
+        height: 300px;
+        max-width: 100%;
+        width: auto;
+    }
+  }

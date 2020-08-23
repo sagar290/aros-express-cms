@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
@@ -39,7 +39,7 @@ import { EditPickupmanComponent } from './components/pickupman/edit-pickupman/ed
 import { PickedParcelComponent } from './components/parcel/picked-parcel/picked-parcel.component';
 import { ReadyParcelComponent } from './components/parcel/ready-parcel/ready-parcel.component';
 import { InprogressParcelComponent } from './components/parcel/inprogress-parcel/inprogress-parcel.component';
-
+import { CustomErrorHandler } from "./handlers/error.handler";
 const IMP_EXP = [
   HeaderComponent,
   SidebarComponent,
@@ -93,7 +93,11 @@ const IMP_EXP = [
       provide: HTTP_INTERCEPTORS,
       useClass: HttpTokenInterceptor,
       multi: true
-    }
+    },
+    // {
+    //   provide: ErrorHandler,
+    //   useClass: CustomErrorHandler
+    // }
   ],
   exports: [
     ...IMP_EXP,

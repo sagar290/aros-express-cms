@@ -56,6 +56,41 @@ export class EditParcelComponent implements OnInit {
     })
   }
 
+  getAllStatus() {
+    if (this.parcel.status === "STORED") {
+      return [
+        {
+          title: "Ready",
+          value: "READY"
+        },
+        {
+          title: "Cancelled",
+          value: "CANCELLED"
+        }
+      ]
+    } else if (this.parcel.status === "PROCESSING") {
+      return [
+        {
+          title: "Cancelled",
+          value: "CANCELLED"
+        }
+      ]
+    } else if (this.parcel.status === "PICKED") {
+      return [
+        {
+          title: "Stored",
+          value: "STORED"
+        },
+        {
+          title: "Cancelled",
+          value: "CANCELLED"
+        }
+      ]
+    } else {
+      return []
+    }
+  }
+
   getContact(contact) {
     return contact.split('').reduce((acc, el, i) => {
       if (i <= 2) return ""
@@ -67,11 +102,10 @@ export class EditParcelComponent implements OnInit {
     this.common.confirm.subscribe(confirm => {
       if (confirm) {
         this.api.postParcelStatus(this.parcel.id, data).subscribe((data: any) => {
-          console.log(data);
-
           this.snackbar.open('Status Changed!', 'close', {
             duration: 4000
           })
+          this.parcel.status = this.parcel.changed_status
         }, (e) => {
           this.snackbar.open(`${e.error.message}`, 'close', {
             duration: 4000

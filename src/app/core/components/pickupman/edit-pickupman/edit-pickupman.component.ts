@@ -12,10 +12,10 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class EditPickupmanComponent implements OnInit {
   edited: boolean = false
+  editedPass: boolean = false
   pman
   pickupman: FormGroup = this.fb.group({
     contact: ["", [Validators.required, Validators.pattern("^0?1[3456789][0-9]{8}$")]],
-    password: ["", Validators.required],
     name: ["", Validators.required],
     nid: ["", Validators.required],
     location: ["", Validators.required],
@@ -35,7 +35,6 @@ export class EditPickupmanComponent implements OnInit {
     this.pman = this.route.snapshot.data.pickupman
     this.pickupman.patchValue({
       contact: this.getContact(this.pman.contact),
-      password: this.pman.password,
       name: this.pman.name,
       nid: this.pman.nid,
       location: this.pman.location,
@@ -95,13 +94,29 @@ export class EditPickupmanComponent implements OnInit {
     })
   }
 
+  resetPassword() {
+    this.common.confirm.subscribe(data => {
+      if (data) {
+        this.api.editPickupman(this.pman.id, {
+          password: this.pman.password || "123"
+        }).subscribe(data => {
+          this.snackbar.open('Password changed!', 'close', {
+            duration: 4000
+          })
+          this.editedPass = false
+        })
+      }
+    })
+  }
+
   save() {
+    console.log(this.pickupman.getRawValue());
+
     if (this.pickupman.valid) {
       this.common.confirm.subscribe(confirm => {
         if (confirm) {
           this.api.editPickupman(this.pman.id, {
             contact: `+88${this.pickupman.get('contact').value}`,
-            password: this.pickupman.get('password').value,
             name: this.pickupman.get('name').value,
             nid: this.pickupman.get('nid').value,
             location: this.pickupman.get('location').value,

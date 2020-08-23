@@ -148,11 +148,11 @@
                         </div>
                         <div class="field-body">
                             <div class="field has-addons">
-                                <div class="control is-expanded">
+                                <div class="control is-expanded" [ngClass]="{'editable': parcel}">
                                     <div class="select is-fullwidth">
                                         <select (change)="parcel.changed_status = $event.target.value">
                                             <option value="">-- select a status -- </option>
-                                            <option value="{{status.value}}" *ngFor="let status of allStatus"
+                                            <option value="{{status.value}}" *ngFor="let status of getAllStatus()"
                                                 [selected]="status.value == parcel.staus">{{status.title}}
                                             </option>
                                         </select>
@@ -165,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="field is-horizontal">
+                    <div class="field is-horizontal" *ngIf="parcel.status === 'PROCESSING'">
                         <div class="field-label is-normal">
                             <label class="label">Pickup Assigned</label>
                         </div>
@@ -189,7 +189,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="field is-horizontal">
+                    <div class="field is-horizontal"
+                        *ngIf="parcel.status === 'READY' || parcel.status === 'INPROGRESS'">
                         <div class="field-label is-normal">
                             <label class="label">Delivery Assigned</label>
                         </div>
@@ -313,14 +314,36 @@
                 <div class="content">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
+                            <label class="label">Name</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    {{parcel.merchant.business_name}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
                             <label class="label">Phone</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="getContact(parcel.merchant_no)"
-                                        (change)="parcel.merchant_no = $event.target.value">
+                                    {{getContact(parcel.merchant.contact)}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Address</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    {{parcel.merchant.business_address}}
                                 </p>
                             </div>
                         </div>

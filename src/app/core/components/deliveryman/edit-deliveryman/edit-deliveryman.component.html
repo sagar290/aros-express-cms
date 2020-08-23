@@ -48,22 +48,6 @@
                     </div>
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
-                            <label class="label">Password</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input"
-                                        [ngClass]="{'editable': edited, 'is-danger': password.invalid && edited}"
-                                        type="text" formControlName="password">
-                                </p>
-                                <p class="help is-danger" *ngIf="password.invalid && edited">This field is
-                                    required!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
                             <label class="label">Contact</label>
                         </div>
                         <div class="field-body">
@@ -131,6 +115,25 @@
                                         </mat-radio-button>
                                     </mat-radio-group>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal" *ngIf="editedPass">
+                        <label class="label">New Password</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="flex" [ngClass]="{'control': editedPass, 'flex-end': !editedPass}">
+                                    <input class="input" [ngClass]="{'editable': editedPass}" type="text"
+                                        (change)="dman.password = $event.target.value" [value]="editedPass ? '': '****'"
+                                        *ngIf="editedPass">
+                                    <button class="button is-info ml-2" (click)="editedPass = !editedPass"
+                                        [ngClass]="{'is-warning': editedPass}">{{editedPass ? "Cancel" : "Reset password"}}</button>
+                                    <button class="button is-success ml-2" *ngIf="editedPass"
+                                        (click)="resetPassword()">Save</button>
+                                </p>
                             </div>
                         </div>
                     </div>

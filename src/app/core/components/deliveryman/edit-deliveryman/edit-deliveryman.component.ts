@@ -12,10 +12,10 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class EditDeliverymanComponent implements OnInit {
   edited: boolean = false
+  editedPass: boolean = false
   dman
   deliveryman: FormGroup = this.fb.group({
     contact: ["", [Validators.required, Validators.pattern("^0?1[3456789][0-9]{8}$")]],
-    password: ["", Validators.required],
     name: ["", Validators.required],
     nid: ["", Validators.required],
     location: ["", Validators.required],
@@ -50,7 +50,21 @@ export class EditDeliverymanComponent implements OnInit {
       if (i > 2 && el) return `${acc}${el}`
     }, "")
   }
-  base64Image
+
+  resetPassword() {
+    this.common.confirm.subscribe(data => {
+      if (data) {
+        this.api.editPickupman(this.dman.id, {
+          password: this.dman.password || "123"
+        }).subscribe(data => {
+          this.snackbar.open('Password changed!', 'close', {
+            duration: 4000
+          })
+          this.editedPass = false
+        })
+      }
+    })
+  }
 
   onDpChange(files) {
     let reader = new FileReader(), instance = this
@@ -101,7 +115,6 @@ export class EditDeliverymanComponent implements OnInit {
         if (confirm) {
           this.api.editDeliveryman(this.dman.id, {
             contact: `+88${this.deliveryman.get('contact').value}`,
-            password: this.deliveryman.get('password').value,
             name: this.deliveryman.get('name').value,
             nid: this.deliveryman.get('nid').value,
             location: this.deliveryman.get('location').value,

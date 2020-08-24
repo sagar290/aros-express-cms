@@ -68,13 +68,6 @@ export class EditParcelComponent implements OnInit {
           value: "CANCELLED"
         }
       ]
-    } else if (this.parcel.status === "PROCESSING") {
-      return [
-        {
-          title: "Cancelled",
-          value: "CANCELLED"
-        }
-      ]
     } else if (this.parcel.status === "PICKED") {
       return [
         {
@@ -87,7 +80,10 @@ export class EditParcelComponent implements OnInit {
         }
       ]
     } else {
-      return []
+      return [{
+          title: "Cancelled",
+          value: "CANCELLED"
+        }]
     }
   }
 

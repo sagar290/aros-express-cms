@@ -56,6 +56,13 @@ export class EditParcelComponent implements OnInit {
     })
   }
 
+  getPickupmanName(id) {
+    return id ? this.pickupmen.filter(x => x.id == id)[0].name : "None is assigned yet"
+  }
+  getDeliverymanName(id) {
+    return id ? this.deliverymen.filter(x => x.id == id)[0].name : "None is assigned yet"
+  }
+
   getAllStatus() {
     if (this.parcel.status === "STORED") {
       return [
@@ -81,9 +88,9 @@ export class EditParcelComponent implements OnInit {
       ]
     } else {
       return [{
-          title: "Cancelled",
-          value: "CANCELLED"
-        }]
+        title: "Cancelled",
+        value: "CANCELLED"
+      }]
     }
   }
 

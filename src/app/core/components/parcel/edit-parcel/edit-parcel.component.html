@@ -165,7 +165,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="field is-horizontal" *ngIf="parcel.status === 'PROCESSING'">
+                    <div class="field is-horizontal py-3"
+                        *ngIf="!(parcel.status === 'PROCESSING' || parcel.status === 'PENDING')">
+                        <div class="field-label">
+                            <label class="label">Pickup Assigned</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    {{getPickupmanName(parcel.p_id)}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal"
+                        *ngIf="parcel.status === 'PROCESSING' || parcel.status === 'PENDING'">
                         <div class="field-label is-normal">
                             <label class="label">Pickup Assigned</label>
                         </div>
@@ -186,6 +200,19 @@
                                     <button class="button is-primary"
                                         (click)="assignPDman({'p_id': parcel.p_id})">Assign</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal py-3"
+                        *ngIf="!(parcel.status === 'READY' || parcel.status === 'INPROGRESS')">
+                        <div class="field-label">
+                            <label class="label">Delivery Assigned</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control">
+                                    {{getDeliverymanName(parcel.d_id)}}
+                                </p>
                             </div>
                         </div>
                     </div>

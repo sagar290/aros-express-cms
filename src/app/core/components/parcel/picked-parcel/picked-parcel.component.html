@@ -17,10 +17,10 @@
                     </tr>
                     <tr *ngFor="let picked of pickeds.data">
                         <td>{{picked.id}}</td>
-                        <td>{{picked.merchant}}</td>
-                        <td>{{picked.customer_name}}</td>
+                        <td>{{picked.merchant.name}}</td>
+                        <td>{{picked.merchant.business_name}}</td>
                         <td>
-                            <button class="button is-success is-small" [routerLink]="['/parcel', 'pickeds', picked.id]">
+                            <button class="button is-success is-small" [routerLink]="['/parcel', 'details', picked.id]">
                                 Details
                             </button>
                         </td>

@@ -9,6 +9,7 @@ export class StorageService {
         data = data || null;
         const storage = forgot ? sessionStorage : localStorage;
         storage.setItem(key, JSON.stringify(data));
+
     }
 
     public getItem(key, forgot?: boolean) {

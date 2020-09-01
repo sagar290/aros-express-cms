@@ -8,7 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./pending-parcel.component.scss']
 })
 export class PendingParcelComponent implements OnInit {
-  pendings
+  pendings;
+
 
   constructor(
     private api: ApiService,
@@ -16,11 +17,26 @@ export class PendingParcelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.pendings = this.route.snapshot.data.parcels
+    this.pendings = this.route.snapshot.data.parcels;
   }
 
   getPaginatedData(query) {
     this.api.getAllPendingParcels(query).subscribe(data => this.pendings = data)
   }
+
+
+  
+  search_type =  'by_id';
+  search_value = '';
+  public search() {
+
+    const query = {
+      search_type: this.search_type,
+      search_value: this.search_value,
+    };
+    const data = this.api.getAllPendingParcels(query).subscribe(data => this.pendings = data);
+  }
+
+
 
 }

@@ -15,6 +15,7 @@ export class EditParcelComponent implements OnInit {
   parcel
   pickupmen
   deliverymen
+  changed_status
 
   allStatus = [
     {
@@ -42,6 +43,8 @@ export class EditParcelComponent implements OnInit {
     this.parcel = this.route.snapshot.data.parcel
     this.pickupmen = this.route.snapshot.data.pickupmen
     this.deliverymen = this.route.snapshot.data.deliverymen
+
+    this.getAllStatus();
   }
 
   assignPDman(data) {
@@ -65,32 +68,37 @@ export class EditParcelComponent implements OnInit {
 
   getAllStatus() {
     if (this.parcel.status === "STORED") {
-      return [
+      this.allStatus = [
         {
-          title: "Ready",
+          title: "READY",
           value: "READY"
         },
         {
-          title: "Cancelled",
+          title: "CANCELLED",
           value: "CANCELLED"
         }
       ]
     } else if (this.parcel.status === "PICKED") {
-      return [
+      this.allStatus = [
         {
-          title: "Stored",
+          title: "STORED",
           value: "STORED"
         },
         {
-          title: "Cancelled",
+          title: "CANCELLED",
+          value: "CANCELLED"
+        }
+      ]
+    }
+    else if (this.parcel.status !== "DELIVERED" && this.parcel.status !== "CANCELLED") {
+      this.allStatus = [
+        {
+          title: "CANCELLED",
           value: "CANCELLED"
         }
       ]
     } else {
-      return [{
-        title: "Cancelled",
-        value: "CANCELLED"
-      }]
+      this.allStatus = []
     }
   }
 
@@ -102,6 +110,7 @@ export class EditParcelComponent implements OnInit {
   }
 
   changeParcelStatus(data) {
+    
     this.common.confirm.subscribe(confirm => {
       if (confirm) {
         this.api.postParcelStatus(this.parcel.id, data).subscribe((data: any) => {

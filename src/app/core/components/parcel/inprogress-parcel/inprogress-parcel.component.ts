@@ -24,5 +24,18 @@ export class InprogressParcelComponent implements OnInit {
     this.api.getAllInprogressParcels(query).subscribe(data => this.inprogresses = data)
   }
 
+  search_type =  'by_id';
+  search_value = '';  
+  
+  public search() {
+
+    const query = {
+      search_type: this.search_type,
+      search_value: this.search_value,
+    };
+    const data = this.api.getAllInprogressParcels(query).subscribe(data => this.inprogresses = data);
+  }
+
+
 
 }

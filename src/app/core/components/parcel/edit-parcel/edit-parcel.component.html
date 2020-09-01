@@ -15,9 +15,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.customer_name"
-                                        (change)="parcel.customer_name = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.customer_name" (change)="parcel.customer_name = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -29,9 +27,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="getContact(parcel.customer_contact)"
-                                        (change)="parcel.customer_contact = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="getContact(parcel.customer_contact)" (change)="parcel.customer_contact = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -43,9 +39,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.customer_address"
-                                        (change)="parcel.customer_address = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.customer_address" (change)="parcel.customer_address = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -57,9 +51,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.customer_city"
-                                        (change)="parcel.customer_city = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.customer_city" (change)="parcel.customer_city = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -71,9 +63,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.customer_area"
-                                        (change)="parcel.customer_area = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.customer_area" (change)="parcel.customer_area = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -85,9 +75,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.pickup_address"
-                                        (change)="parcel.pickup_address = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.pickup_address" (change)="parcel.pickup_address = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -112,8 +100,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.category" (change)="parcel.category = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.category" (change)="parcel.category = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -152,21 +139,19 @@
                                     <div class="select is-fullwidth">
                                         <select (change)="parcel.changed_status = $event.target.value">
                                             <option value="">-- select a status -- </option>
-                                            <option value="{{status.value}}" *ngFor="let status of getAllStatus()"
-                                                [selected]="status.value == parcel.staus">{{status.title}}
+                                            <option value="{{status.value}}" *ngFor="let status of allStatus"
+                                                [selected]="status.value == parcel.status">{{status.title}}
                                             </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="control ml-2">
-                                    <button class="button is-primary"
-                                        (click)="changeParcelStatus({'status': parcel.changed_status})">Change</button>
+                                    <button class="button is-primary" (click)="changeParcelStatus({'status': parcel.changed_status})">Change</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="field is-horizontal py-3"
-                        *ngIf="!(parcel.status === 'PROCESSING' || parcel.status === 'PENDING')">
+                    <div class="field is-horizontal py-3" *ngIf="!(parcel.status === 'PROCESSING' || parcel.status === 'PENDING')">
                         <div class="field-label">
                             <label class="label">Pickup Assigned</label>
                         </div>
@@ -178,8 +163,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="field is-horizontal"
-                        *ngIf="parcel.status === 'PROCESSING' || parcel.status === 'PENDING'">
+                    <div class="field is-horizontal" *ngIf="parcel.status === 'PROCESSING' || parcel.status === 'PENDING'">
                         <div class="field-label is-normal">
                             <label class="label">Pickup Assigned</label>
                         </div>
@@ -197,14 +181,12 @@
                                     </div>
                                 </div>
                                 <div class="control ml-2">
-                                    <button class="button is-primary"
-                                        (click)="assignPDman({'p_id': parcel.p_id})">Assign</button>
+                                    <button class="button is-primary" (click)="assignPDman({'p_id': parcel.p_id})">Assign</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="field is-horizontal py-3"
-                        *ngIf="!(parcel.status === 'READY' || parcel.status === 'INPROGRESS')">
+                    <div class="field is-horizontal py-3" *ngIf="!(parcel.status === 'READY' || parcel.status === 'INPROGRESS')">
                         <div class="field-label">
                             <label class="label">Delivery Assigned</label>
                         </div>
@@ -216,8 +198,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="field is-horizontal"
-                        *ngIf="parcel.status === 'READY' || parcel.status === 'INPROGRESS'">
+                    <div class="field is-horizontal" *ngIf="parcel.status === 'READY' || parcel.status === 'INPROGRESS'">
                         <div class="field-label is-normal">
                             <label class="label">Delivery Assigned</label>
                         </div>
@@ -235,8 +216,7 @@
                                     </div>
                                 </div>
                                 <div class="control ml-2">
-                                    <button class="button is-primary"
-                                        (click)="assignPDman({'d_id': parcel.d_id})">Assign</button>
+                                    <button class="button is-primary" (click)="assignPDman({'d_id': parcel.d_id})">Assign</button>
                                 </div>
                             </div>
                         </div>
@@ -263,23 +243,19 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.product_net_weight"
-                                        (change)="parcel.product_net_weight = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.product_net_weight" (change)="parcel.product_net_weight = $event.target.value">
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
-                            <label class="label">Payment Amount</label>
+                            <label class="label">Total Price</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.payment_amount"
-                                        (change)="parcel.payment_amount = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.payment_amount" (change)="parcel.payment_amount = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -291,9 +267,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.service_charge"
-                                        (change)="parcel.service_charge = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.service_charge" (change)="parcel.service_charge = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -305,9 +279,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.total_amount"
-                                        (change)="parcel.total_amount = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.total_amount" (change)="parcel.total_amount = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -319,9 +291,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" [ngClass]="{'editable': edited}" type="text"
-                                        [value]="parcel.product_additional_info"
-                                        (change)="parcel.product_additional_info = $event.target.value">
+                                    <input class="input" [ngClass]="{'editable': edited}" type="text" [value]="parcel.product_additional_info" (change)="parcel.product_additional_info = $event.target.value">
                                 </p>
                             </div>
                         </div>
@@ -382,8 +352,7 @@
 
 </div>
 <div class="buttons is-centered">
-    <button class="button is-info" [ngClass]="{'is-warning': edited}"
-        (click)="edited = !edited">{{ edited ? 'Cancel Edit' : 'Edit' }}
+    <button class="button is-info" [ngClass]="{'is-warning': edited}" (click)="edited = !edited">{{ edited ? 'Cancel Edit' : 'Edit' }}
     </button>
     <button class="button is-success" *ngIf="edited" (click)="edit()">
         Save

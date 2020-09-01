@@ -26,13 +26,13 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      contact: [null, [Validators.required]],
+      name: [null, [Validators.required]],
       password: [null, Validators.required]
     });
   }
 
-  get contact() {
-    return this.loginForm.get('contact')
+  get name() {
+    return this.loginForm.get('name')
   }
 
   get password() {
@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
 
   login() {
     this.auth.login({
-      contact: `+88${this.loginForm.value.contact}`,
+      name: `${this.loginForm.value.name}`,
       password: this.loginForm.value.password
     }).subscribe(
       res => { },

@@ -24,9 +24,9 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 
         const TOKEN_TYPE: any = this.storage.getItem('token') ? this.storage.getItem('token')['token_type'] : null
 
-        if (req.url.startsWith('http://api')) {
+        // if (req.url.startsWith('http://api')) {
             TOKEN && TOKEN_TYPE ? headersConfig['Authorization'] = `${TOKEN_TYPE} ${TOKEN}` : ''
-        }
+        // }
 
         const request = req.clone({ setHeaders: headersConfig })
 

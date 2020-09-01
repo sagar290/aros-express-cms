@@ -8,11 +8,12 @@ import { SharedModule } from './shared/shared.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { CustomMaterialModule } from './modules/custom-material/custom-material.module'
+import { CustomMaterialModule } from './modules/custom-material/custom-material.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

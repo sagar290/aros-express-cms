@@ -24,4 +24,15 @@ export class StoredParcelComponent implements OnInit {
     this.api.getAllStoredParcels(query).subscribe(data => this.storeds = data)
   }
 
+  search_type =  'by_id';
+  search_value = '';
+  public search() {
+
+    const query = {
+      search_type: this.search_type,
+      search_value: this.search_value,
+    };
+    const data = this.api.getAllStoredParcels(query).subscribe(data => this.storeds = data);
+  }
+
 }

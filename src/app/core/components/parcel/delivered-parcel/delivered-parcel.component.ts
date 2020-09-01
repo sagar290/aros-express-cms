@@ -24,4 +24,16 @@ export class DeliveredParcelComponent implements OnInit {
     this.api.getAllDeliveredParcels(query).subscribe(data => this.delivereds = data)
   }
 
+
+  search_type =  'by_id';
+  search_value = '';
+  public search() {
+
+    const query = {
+      search_type: this.search_type,
+      search_value: this.search_value,
+    };
+    const data = this.api.getAllDeliveredParcels(query).subscribe(data => this.delivereds = data);
+  }
+
 }

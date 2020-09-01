@@ -24,4 +24,16 @@ export class ReadyParcelComponent implements OnInit {
     this.api.getAllReadyParcels(query).subscribe(data => this.readys = data)
   }
 
+
+  search_type =  'by_id';
+  search_value = '';
+  public search() {
+
+    const query = {
+      search_type: this.search_type,
+      search_value: this.search_value,
+    };
+    const data = this.api.getAllReadyParcels(query).subscribe(data => this.readys = data);
+  }
+
 }

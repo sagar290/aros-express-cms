@@ -1,5 +1,30 @@
 <div class="card">
     <div class="card-content">
+        <div class="field has-addons has-addons-right">
+            <p class="control">
+                <span class="select">
+                <select [(ngModel)]="search_type">
+                  <option value="by_id">By Parcel Id</option>
+                  <option value="by_m_name">By Marchent Name</option>
+                </select>
+              </span>
+            </p>
+            <p class="control">
+                <input [(ngModel)]="search_value" class="input" type="text" placeholder="ABC123">
+            </p>
+            <p class="control">
+                <a class="button is-primary" (click)="search()">
+                Search
+              </a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<br>
+<div class="card">
+    <div class="card-content">
         <div class="table-container">
             <table class="table is-hoverable is-fullwidth">
                 <thead>
@@ -12,16 +37,15 @@
                 </thead>
                 <tbody>
                     <tr *ngIf="!cancelleds.data.length">
-                        <td colspan="4" style="height: 30vh;">No parcel is
-                            cancelled!</td>
+                        <td colspan="4" style="height: 30vh;">No parcel is cancelled!
+                        </td>
                     </tr>
                     <tr *ngFor="let cancelled of cancelleds.data">
                         <td>{{cancelled.id}}</td>
                         <td>{{cancelled.merchant.name}}</td>
                         <td>{{cancelled.merchant.business_name}}</td>
                         <td>
-                            <button class="button is-success is-small"
-                                [routerLink]="['/parcel', 'details', cancelled.id]">
+                            <button class="button is-success is-small" [routerLink]="['/parcel', 'details', cancelled.id]">
                                 Details
                             </button>
                         </td>
@@ -34,23 +58,19 @@
         <div class="card-footer-item">
             <nav class="pagination is-rounded is-centered">
                 <ul class="pagination-list">
-                    <li><button class="pagination-link" title="First Page" [disabled]="!cancelleds.prev_page_url"
-                            (click)="getPaginatedData({page: 1})"><i class="fas fa-chevron-left"></i><i
+                    <li><button class="pagination-link" title="First Page" [disabled]="!cancelleds.prev_page_url" (click)="getPaginatedData({page: 1})"><i class="fas fa-chevron-left"></i><i
                                 class="fas fa-chevron-left"></i></button></li>
-                    <li><button class="pagination-link" title="Previous Page" [disabled]="!cancelleds.prev_page_url"
-                            (click)="getPaginatedData({page: cancelleds.current_page - 1})"><i
+                    <li><button class="pagination-link" title="Previous Page" [disabled]="!cancelleds.prev_page_url" (click)="getPaginatedData({page: cancelleds.current_page - 1})"><i
                                 class="fas fa-chevron-left"></i></button>
                     </li>
                     <li class="mx-2">
                         <small class="small">{{cancelleds.current_page}} of
                             {{cancelleds.last_page}}</small>
                     </li>
-                    <li><button class="pagination-link" title="Next Page" [disabled]="!cancelleds.next_page_url"
-                            (click)="getPaginatedData({page: cancelleds.current_page + 1})"><i
+                    <li><button class="pagination-link" title="Next Page" [disabled]="!cancelleds.next_page_url" (click)="getPaginatedData({page: cancelleds.current_page + 1})"><i
                                 class="fas fa-chevron-right"></i></button>
                     </li>
-                    <li><button class="pagination-link" title="Last Page" [disabled]="!cancelleds.next_page_url"
-                            (click)="getPaginatedData({page: cancelleds.last_page})"><i
+                    <li><button class="pagination-link" title="Last Page" [disabled]="!cancelleds.next_page_url" (click)="getPaginatedData({page: cancelleds.last_page})"><i
                                 class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></button></li>
                 </ul>
             </nav>

@@ -23,4 +23,15 @@ export class ProcessingParcelComponent implements OnInit {
   getPaginatedData(query) {
     this.api.getAllProcessingParcels(query).subscribe(data => this.processings = data)
   }
+
+  search_type =  'by_id';
+  search_value = '';
+  public search() {
+
+    const query = {
+      search_type: this.search_type,
+      search_value: this.search_value,
+    };
+    const data = this.api.getAllProcessingParcels(query).subscribe(data => this.processings = data);
+  }
 }

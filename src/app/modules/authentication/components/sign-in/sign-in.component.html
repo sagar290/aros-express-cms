@@ -1,7 +1,6 @@
 <section class="hero is-fullheight signin">
-    <div class="hero-body">       
-        <svg class="signin-svg animated" id="freepik_stories-delivery" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"
-            version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">           
+    <div class="hero-body">
+        <svg class="signin-svg animated" id="freepik_stories-delivery" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">           
             <g id="freepik--Floor--inject-3" class="animable" style="transform-origin: 250.401px 310.402px;">
                 <path
                     d="M96.53,390.78c85,44.4,222.75,44.4,307.73,0s85-116.36,0-160.76-222.75-44.39-307.73,0S11.56,346.39,96.53,390.78Z"
@@ -789,22 +788,19 @@
                     <p class="is-small">Content Management Dashboard</p>
                 </div>
                 <div class="field">
-                    <label class="label">Contact</label>
+                    <label class="label">Username</label>
                     <div class="control has-icons-left">
-                        <input formControlName="contact" class="input" type="text" placeholder="01**-****-****"
-                            [ngClass]="{'is-danger': contact.invalid && contact.touched, 'is-success': contact.valid}">
+                        <input formControlName="name" class="input" type="text" placeholder="Bornon IT" [ngClass]="{'is-danger': name.invalid && name.touched, 'is-success': name.valid}">
                         <span class="icon is-small is-left">
                             <i class="fas fa-phone"></i>
                         </span>
                     </div>
-                    <p class="help is-danger" *ngIf="contact.invalid && contact.touched">Invalid contact format</p>
+                    <p class="help is-danger" *ngIf="name.invalid && name.touched">Invalid name format</p>
                 </div>
                 <div class="field">
                     <label class="label">Password</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input class="input" [type]="showPassword ? 'text' : 'password'" placeholder="****"
-                            formControlName="password"
-                            [ngClass]="{'is-success': password.valid, 'is-danger': password.invalid && password.touched}">
+                        <input class="input" [type]="showPassword ? 'text' : 'password'" placeholder="****" formControlName="password" [ngClass]="{'is-success': password.valid, 'is-danger': password.invalid && password.touched}">
                         <span class="icon is-small is-left">
                             <i class="fas fa-key"></i>
                         </span>

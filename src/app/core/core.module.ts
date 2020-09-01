@@ -40,6 +40,7 @@ import { PickedParcelComponent } from './components/parcel/picked-parcel/picked-
 import { ReadyParcelComponent } from './components/parcel/ready-parcel/ready-parcel.component';
 import { InprogressParcelComponent } from './components/parcel/inprogress-parcel/inprogress-parcel.component';
 import { CustomErrorHandler } from "./handlers/error.handler";
+import { UserComponent } from './components/Cms/user/user.component';
 const IMP_EXP = [
   HeaderComponent,
   SidebarComponent,
@@ -63,7 +64,8 @@ const IMP_EXP = [
 
 @NgModule({
   declarations: [
-    ...IMP_EXP
+    ...IMP_EXP,
+    UserComponent
   ],
   imports: [
     CommonModule,

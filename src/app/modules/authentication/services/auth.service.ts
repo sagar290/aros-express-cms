@@ -42,7 +42,8 @@ export class AuthService {
   populate() {
     let token = this.storage.getItem("token")
     let userInfo = this.storage.getItem("user")
-
+    console.log(token);
+    
     if (token && token !== 'null') {
       if (userInfo && userInfo !== 'null') {
         this.currentUserSubject.next(userInfo)
@@ -55,7 +56,7 @@ export class AuthService {
             this.currentUserSubject.next(user.data)
             this.isAuthenticatedSubject.next(true)
           }, err => {
-            this.deleteSession()
+            // this.deleteSession()
           })
       }
     } else {
@@ -99,6 +100,7 @@ export class AuthService {
 
   public createSession(data: any) {
     // Save JWT sent from server in localstorage
+    console.log(data);
     this.storage.setItem("token", data)
     this.isAuthenticatedSubject.next(true)
     this.startExpiresIn()

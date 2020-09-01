@@ -30,6 +30,7 @@ import { InprogressParcelComponent } from './core/components/parcel/inprogress-p
 import { InprogressParcelsResolver } from './core/resolvers/inprogress-parcels.resolver';
 import { ReadyParcelComponent } from './core/components/parcel/ready-parcel/ready-parcel.component';
 import { ReadyParcelsResolver } from './core/resolvers/ready-parcels.resolver';
+import { UserComponent } from './core/components/Cms/user/user.component';
 const routes: Routes = [
   {
     path: "",
@@ -242,6 +243,33 @@ const routes: Routes = [
                 }
               }
             ]
+          }
+        ]
+      },
+      {
+        path: "cms",
+        data: {
+          breadcrumb: "CMS"
+        },
+        children: [
+          {
+            path: "",
+            redirectTo: "user",
+            pathMatch: "full"
+          },
+          {
+            path: "user",
+            component: UserComponent,
+            data: {
+              breadcrumb: "user"
+            }
+          },
+          {
+            path: "edit",
+            component: UserComponent,
+            data: {
+              breadcrumb: "edit"
+            }
           }
         ]
       }

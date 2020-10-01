@@ -31,6 +31,8 @@ import { InprogressParcelsResolver } from './core/resolvers/inprogress-parcels.r
 import { ReadyParcelComponent } from './core/components/parcel/ready-parcel/ready-parcel.component';
 import { ReadyParcelsResolver } from './core/resolvers/ready-parcels.resolver';
 import { UserComponent } from './core/components/Cms/user/user.component';
+import { MerchantListComponent } from './core/components/merchant/merchant-list/merchant-list.component';
+import { MerchantDetailsComponent } from './core/components/merchant/merchant-details/merchant-details.component';
 const routes: Routes = [
   {
     path: "",
@@ -270,6 +272,20 @@ const routes: Routes = [
             data: {
               breadcrumb: "edit"
             }
+          },
+          {
+            path: "merchants",
+            component: MerchantListComponent,
+            data: {
+              breadcrumb: "Merchants"
+            },
+          },
+          {
+            path: "merchants/:merchant_id",
+            component: MerchantDetailsComponent,
+            data: {
+              breadcrumb: "Merchants Details"
+            },
           }
         ]
       }

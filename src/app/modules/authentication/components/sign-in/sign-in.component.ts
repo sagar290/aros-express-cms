@@ -44,7 +44,9 @@ export class SignInComponent implements OnInit {
       name: `${this.loginForm.value.name}`,
       password: this.loginForm.value.password
     }).subscribe(
-      res => { },
+      (res) => {
+        // success message  
+       },
       (e) => {
         this.snackBar.open('Wrong credential or account doesn\'t exists!', 'close', {
           duration: 5000

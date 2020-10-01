@@ -41,6 +41,8 @@ import { ReadyParcelComponent } from './components/parcel/ready-parcel/ready-par
 import { InprogressParcelComponent } from './components/parcel/inprogress-parcel/inprogress-parcel.component';
 import { CustomErrorHandler } from "./handlers/error.handler";
 import { UserComponent } from './components/Cms/user/user.component';
+import { MerchantListComponent } from './components/merchant/merchant-list/merchant-list.component';
+import { MerchantDetailsComponent } from './components/merchant/merchant-details/merchant-details.component';
 const IMP_EXP = [
   HeaderComponent,
   SidebarComponent,
@@ -65,7 +67,9 @@ const IMP_EXP = [
 @NgModule({
   declarations: [
     ...IMP_EXP,
-    UserComponent
+    UserComponent,
+    MerchantListComponent,
+    MerchantDetailsComponent
   ],
   imports: [
     CommonModule,

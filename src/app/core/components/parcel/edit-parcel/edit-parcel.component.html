@@ -351,6 +351,34 @@
     </div>
 
 </div>
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Parcel Status
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <ul class="timeline">
+
+                        <li class="timeline-item is-warning" *ngFor="let log of parcel.logs">
+                            <div class="timeline-tag"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Date: {{log.created_at}}</p>
+                                <p class="heading">Status: {{log.status}}</p>
+                                <p>{{log.log_value}}</p>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 <div class="buttons is-centered">
     <button class="button is-info" [ngClass]="{'is-warning': edited}" (click)="edited = !edited">{{ edited ? 'Cancel Edit' : 'Edit' }}
     </button>

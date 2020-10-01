@@ -40,9 +40,9 @@ export class EditParcelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.parcel = this.route.snapshot.data.parcel
-    this.pickupmen = this.route.snapshot.data.pickupmen
-    this.deliverymen = this.route.snapshot.data.deliverymen
+    this.parcel = this.route.snapshot.data.parcel;
+    this.pickupmen = this.route.snapshot.data.pickupmen;
+    this.deliverymen = this.route.snapshot.data.deliverymen;
 
     this.getAllStatus();
   }

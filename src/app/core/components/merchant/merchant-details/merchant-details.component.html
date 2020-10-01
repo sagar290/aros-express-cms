@@ -1,0 +1,236 @@
+<div class="task-container columns is-multiline">
+    <div class="card column  full-height">
+        <div class="card-content">
+
+            <div class="field is-three-quarters ">
+
+                <div class="field">
+                    <!-- <p class="control"> -->
+                    <table class="table user_details is-bordered is-striped is-fullwidth">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    Profile Picture
+                                </th>
+                                <td>
+                                    <figure class="image is-128x128">
+                                        <img src="{{ user.dp }}">
+                                    </figure>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <td>
+
+                                    <p class="control">
+                                        <label class="label">{{ user.name }}</label>
+
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    Mobile Number
+                                </th>
+                                <td>
+
+                                    <p class="control">
+                                        <label class="label">{{ user.contact  }}</label>
+
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    Business Name
+                                </th>
+                                <td>
+
+                                    <p class="control">
+                                        <label class="label">{{ user.business_name  }}</label>
+
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    Business Type
+                                </th>
+                                <td>
+
+                                    <p class="control">
+                                        <label class="label">{{ user.business_type  }}</label>
+
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    Business Address
+                                </th>
+                                <td>
+
+                                    <p class="control">
+                                        <label class="label">{{ user.business_address  }}</label>
+
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    National ID (NID)
+                                </th>
+                                <td>
+
+                                    <p class="control">
+                                        <label class="label">{{ user.nid  }}</label>
+
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    NID Front Side
+                                </th>
+                                <td>
+
+                                    <figure class="image is-128x128">
+                                        <img src="{{ user.nid_front }}">
+                                    </figure>
+
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    NID Back Side
+                                </th>
+                                <td>
+                                    <figure class="image is-128x128">
+                                        <img src="{{ user.nid_back }}">
+                                    </figure>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    Date of joined
+                                </th>
+                                <td>
+                                    {{ user.joined }}
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- </p> -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br>
+
+<div class="columns filter-buttons">
+    <div class="column filter-button" (click)="showParcelComplteList()">
+        Items: {{ completeParcel.length }}
+        <br> <br> Total Price: {{ countTotalPayment(completeParcel) }} ৳
+        <br> <br> Complete
+    </div>
+    <div class="column filter-button" (click)="showParcelProcessingList()">
+        Items: {{ processingParcel.length }}
+        <br> <br> Total Price: {{ countTotalPayment(processingParcel) }} ৳
+        <br> <br> Processing
+    </div>
+    <div class="column filter-button" (click)="showParcelFailedList()">
+        Items: {{ failedParcel.length }}
+        <br> <br> Total Price: {{ countTotalPayment(failedParcel) }} ৳
+        <br> <br> Failed
+    </div>
+</div>
+
+<br> <br>
+
+<div class="card">
+    <div class="card-content">
+        <div class="field has-addons has-addons-right">
+            <p class="control">
+                <span class="select">
+                <select [(ngModel)]="search_type">
+                  <option value="by_id">By Parcel Id</option>
+                  <option value="by_c_name">By Customer Name</option>
+                  <option value="by_c_number">By Customer Phone</option>
+                </select>
+              </span>
+            </p>
+            <p class="control">
+                <input [(ngModel)]="search_value" class="input" type="text" placeholder="ABC123">
+            </p>
+            <p class="control">
+                <a class="button is-primary" (click)="search()">
+                Search
+              </a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<br> <br>
+
+<div class="card">
+    <div class="card-content">
+        <div class="table-container">
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer Name</th>
+                        <th>Customer Phone</th>
+                        <th>Location</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!parcels">
+                        <td colspan="4" style="height: 30vh;">No parcel is pending!
+                        </td>
+                    </tr>
+                    <tr *ngFor="let parcel of parcels">
+                        <td>{{parcel.id}}</td>
+                        <td>{{parcel.customer_name}}</td>
+                        <td>{{parcel.customer_contact}}</td>
+                        <td>{{parcel.customer_city}}</td>
+                        <td>{{parcel.total_amount}}</td>
+                        <td>{{parcel.status}}</td>
+                        <td>{{parcel.date}}</td>
+                        <td>
+                            <button class="button is-success is-small" [routerLink]="['/parcel', 'details', parcel.id]">
+                                Details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

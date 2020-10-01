@@ -89,6 +89,20 @@ export class ApiService {
   }
 
 
+  // Merchant
+  getAllMerchant(query: any = {}) {
+    return this.http.get(`${environment.api_url}/cms/merchants?${this.objectToUrl(query)}`).pipe(map((data: any) => data));
+  }
+
+  getAllMerchantDetails(user_id) {
+    return this.http.get(`${environment.api_url}/cms/merchants/${user_id}`).pipe(map((data: any) => data));
+  }
+
+  getAllMerchantOrders(user_id, query: any = {}) {
+    return this.http.get(`${environment.api_url}/cms/merchants/${user_id}/orders?${this.objectToUrl(query)}`).pipe(map((data: any) => data));
+  }
+
+
   postS3SignedLink(file_timestamp, file_extension, file_type, path) {
     return this.http.post(`${environment.api_url}/api/getpostvideourl`,
       {

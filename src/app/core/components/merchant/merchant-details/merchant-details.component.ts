@@ -54,7 +54,8 @@ export class MerchantDetailsComponent implements OnInit {
   getParcelData(query: any) {
     this.api.getAllMerchantOrders(this.user_id).subscribe((data: any) => {
       this.parcels = data.data.completed;
-
+      console.log(data);
+      
       this.completeParcel = data.data.completed;
       // this.processingParcel = this.parcels.filter(d => d.status.toUpperCase() !== 'COMPLETED');
       this.processingParcel = data.data.processing;

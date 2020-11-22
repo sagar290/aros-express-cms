@@ -19,16 +19,24 @@ export class EditParcelComponent implements OnInit {
 
   allStatus = [
     {
-      title: "Stored",
-      value: "STORED"
+      title: 'Stored',
+      value: 'STORED'
     },
     {
-      title: "Ready",
-      value: "READY"
+      title: 'Ready',
+      value: 'READY'
     },
     {
-      title: "Cancelled",
-      value: "CANCELLED"
+      title: 'Paid',
+      value: 'PAID'
+    },
+    {
+      title: 'Return',
+      value: 'RETURNED'
+    },
+    {
+      title: 'Cancelled',
+      value: 'CANCELLED'
     }
   ]
 
@@ -60,43 +68,65 @@ export class EditParcelComponent implements OnInit {
   }
 
   getPickupmanName(id) {
-    return id ? this.pickupmen.filter(x => x.id == id)[0].name : "None is assigned yet"
+    return id ? this.pickupmen.filter(x => x.id == id)[0].name : 'None is assigned yet'
   }
   getDeliverymanName(id) {
-    return id ? this.deliverymen.filter(x => x.id == id)[0].name : "None is assigned yet"
+    return id ? this.deliverymen.filter(x => x.id == id)[0].name : 'None is assigned yet'
   }
 
   getAllStatus() {
-    if (this.parcel.status === "STORED") {
+    if (this.parcel.status === 'STORED') {
       this.allStatus = [
         {
-          title: "READY",
-          value: "READY"
+          title: 'READY',
+          value: 'READY'
         },
         {
-          title: "CANCELLED",
-          value: "CANCELLED"
+          title: 'CANCELLED',
+          value: 'CANCELLED'
         }
       ]
-    } else if (this.parcel.status === "PICKED") {
+    } else if (this.parcel.status === 'PICKED') {
       this.allStatus = [
         {
-          title: "STORED",
-          value: "STORED"
+          title: 'STORED',
+          value: 'STORED'
         },
         {
-          title: "CANCELLED",
-          value: "CANCELLED"
+          title: 'CANCELLED',
+          value: 'CANCELLED'
         }
       ]
+    } 
+    
+    else if(this.parcel.status == 'INPROGRESS') {
+      this.allStatus = [
+        {
+          title: 'RETURNED',
+          value: 'RETURNED'
+        },
+        {
+          title: 'CANCELLED',
+          value: 'CANCELLED'
+        }
+      ];
     }
-    else if (this.parcel.status !== "DELIVERED" && this.parcel.status !== "CANCELLED") {
+    else if (this.parcel.status == 'DELIVERED') {
       this.allStatus = [
         {
-          title: "CANCELLED",
-          value: "CANCELLED"
+          title: 'PAID',
+          value: 'PAID'
         }
-      ]
+      ];
+    }
+    else if (this.parcel.status !== 'DELIVERED' && this.parcel.status !== 'CANCELLED' && this.parcel.status !== 'RETURNED' && this.parcel.status !== 'PAID') {
+      this.allStatus = [
+
+        {
+          title: 'CANCELLED',
+          value: 'CANCELLED'
+        }
+      ];
     } else {
       this.allStatus = []
     }
@@ -104,9 +134,9 @@ export class EditParcelComponent implements OnInit {
 
   getContact(contact) {
     return contact.split('').reduce((acc, el, i) => {
-      if (i <= 2) return ""
+      if (i <= 2) return ''
       if (i > 2 && el) return `${acc}${el}`
-    }, "")
+    }, '')
   }
 
   changeParcelStatus(data) {
@@ -132,17 +162,17 @@ export class EditParcelComponent implements OnInit {
       if (confirm) {
         this.edited = false
         this.api.editParcel(this.parcel.id, {
-          "pickup_address": this.parcel.pickup_address,
-          "customer_name": this.parcel.customer_name,
-          "customer_address": this.parcel.customer_address,
-          "customer_city": this.parcel.customer_city,
-          "customer_area": this.parcel.customer_area,
-          "customer_contact": `+88${this.parcel.customer_contact}`,
-          "category": this.parcel.category,
-          "payment_amont": this.parcel.payment_amount,
-          "merchant_no": `+88${this.parcel.merchant_no}`,
-          "product_additional_info": this.parcel.product_additional_info,
-          "product_net_weight": this.parcel.product_net_weight
+          'pickup_address': this.parcel.pickup_address,
+          'customer_name': this.parcel.customer_name,
+          'customer_address': this.parcel.customer_address,
+          'customer_city': this.parcel.customer_city,
+          'customer_area': this.parcel.customer_area,
+          'customer_contact': `+88${this.parcel.customer_contact}`,
+          'category': this.parcel.category,
+          'payment_amont': this.parcel.payment_amount,
+          'merchant_no': `+88${this.parcel.merchant_no}`,
+          'product_additional_info': this.parcel.product_additional_info,
+          'product_net_weight': this.parcel.product_net_weight
         }).subscribe(data => {
           this.snackbar.open('Edited Successfully', 'close', {
             duration: 4000

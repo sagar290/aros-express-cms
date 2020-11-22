@@ -43,6 +43,8 @@ import { CustomErrorHandler } from "./handlers/error.handler";
 import { UserComponent } from './components/Cms/user/user.component';
 import { MerchantListComponent } from './components/merchant/merchant-list/merchant-list.component';
 import { MerchantDetailsComponent } from './components/merchant/merchant-details/merchant-details.component';
+import { PaidParcelComponent } from './components/parcel/paid-parcel/paid-parcel.component';
+import { PaidParcelsResolver } from './resolvers/paid-parcels.resolver';
 const IMP_EXP = [
   HeaderComponent,
   SidebarComponent,
@@ -69,7 +71,8 @@ const IMP_EXP = [
     ...IMP_EXP,
     UserComponent,
     MerchantListComponent,
-    MerchantDetailsComponent
+    MerchantDetailsComponent,
+    PaidParcelComponent
   ],
   imports: [
     CommonModule,
@@ -85,6 +88,7 @@ const IMP_EXP = [
     PendingParcelsResolver,
     CancelledParcelsResolver,
     DeliveredParcelsResolver,
+    PaidParcelsResolver,
     ProcessingParcelsResolver,
     StoredParcelsResolver,
     ParcelResolver,

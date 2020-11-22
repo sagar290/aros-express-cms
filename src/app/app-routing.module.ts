@@ -8,6 +8,7 @@ import { DeliveredParcelComponent } from './core/components/parcel/delivered-par
 import { PendingParcelsResolver } from './core/resolvers/pending-parcels.resolver';
 import { StoredParcelsResolver } from './core/resolvers/stored-parcels.resolver';
 import { DeliveredParcelsResolver } from './core/resolvers/delivered-parcels.resolver';
+import { PaidParcelsResolver } from './core/resolvers/paid-parcels.resolver';
 import { CancelledParcelComponent } from './core/components/parcel/cancelled-parcel/cancelled-parcel.component';
 import { CancelledParcelsResolver } from './core/resolvers/cancelled-parcels.resolver';
 import { EditParcelComponent } from './core/components/parcel/edit-parcel/edit-parcel.component';
@@ -33,6 +34,7 @@ import { ReadyParcelsResolver } from './core/resolvers/ready-parcels.resolver';
 import { UserComponent } from './core/components/Cms/user/user.component';
 import { MerchantListComponent } from './core/components/merchant/merchant-list/merchant-list.component';
 import { MerchantDetailsComponent } from './core/components/merchant/merchant-details/merchant-details.component';
+import { PaidParcelComponent } from './core/components/parcel/paid-parcel/paid-parcel.component';
 const routes: Routes = [
   {
     path: "",
@@ -138,6 +140,16 @@ const routes: Routes = [
             },
             data: {
               breadcrumb: "Delivered"
+            }
+          },
+          {
+            path: "paid",
+            component: PaidParcelComponent,
+            resolve: {
+              parcels: PaidParcelsResolver
+            },
+            data: {
+              breadcrumb: "Paid"
             }
           },
           {

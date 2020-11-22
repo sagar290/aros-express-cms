@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { ApiService } from '../http/api.service';
 
 @Injectable()
-export class PickedParcelsResolver implements Resolve<any> {
+export class PaidParcelsResolver implements Resolve<any> {
 
     constructor(private api: ApiService) { }
 
     resolve(): Observable<any> {
-        return this.api.getAllPickedParcels();
+        return this.api.getAllPaidParcels();
     }
 }

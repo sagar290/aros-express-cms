@@ -20,9 +20,9 @@ export class ApiService {
   getAllPendingParcels(query = {}) {
 
     console.log(query);
-    
+
     console.log(this.objectToUrl(query));
-    
+
     return this.http.get(`${environment.api_url}/cms/parcel?${this.objectToUrl(query)}`);
   }
   getAllStoredParcels(query = {}) {
@@ -42,6 +42,9 @@ export class ApiService {
   }
   getAllDeliveredParcels(query = {}) {
     return this.http.get(`${environment.api_url}/cms/parcel?status=DELIVERED&${this.objectToUrl(query)}`);
+  }
+  getAllPaidParcels(query = {}) {
+    return this.http.get(`${environment.api_url}/cms/parcel?status=PAID&${this.objectToUrl(query)}`);
   }
   getAllCancelledParcels(query = {}) {
     return this.http.get(`${environment.api_url}/cms/parcel?status=CANCELLED&${this.objectToUrl(query)}`);
@@ -98,8 +101,10 @@ export class ApiService {
     return this.http.get(`${environment.api_url}/cms/merchants/${user_id}`).pipe(map((data: any) => data));
   }
 
-  getAllMerchantOrders(user_id, query: any = {}) {
-    return this.http.get(`${environment.api_url}/cms/merchants/${user_id}/orders?${this.objectToUrl(query)}`).pipe(map((data: any) => data));
+  getAllMerchantOrders(user_id: any, query: any = {}) {
+ 
+    return this.http.get(`${environment.api_url}/cms/merchants/${user_id}/orders?${this.objectToUrl(query)}`)
+              .pipe(map((data: any) => data));
   }
 
 
